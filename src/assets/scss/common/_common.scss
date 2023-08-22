@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'tt norms';
+}
+
+:root{
+    --black: #121211;
+    --white: #fff;
+    --blue: #030A8C;
+    --headline-color: linear-gradient(90deg, #121211 23.37%, #3D3D3D 55.51%);
+
+}
+
+$black: var(--black);
+$white: var(--white);
+$blue: var(--blue);
+$headlineColor: var(--headline-color);

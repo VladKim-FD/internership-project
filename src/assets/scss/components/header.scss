@@ -1,0 +1,96 @@
+@import "../common/root";
+@import "../common/common";
+
+.header {
+  padding-top: 85px;
+
+  @include media(1400px) {
+    padding-top: 30px;
+  }
+  @include media(768px) {
+    padding-top: 0;
+  }
+
+  &__content {
+    display: flex;
+
+    @include media(992px) {
+      flex-wrap: wrap;
+    }
+
+    &-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      padding-right: 30px;
+
+      @include media(992px) {
+        width: 100%;
+        padding-right: 0;
+        align-items: center;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      h1 {
+        max-width: 670px;
+        text-transform: uppercase;
+        // margin-bottom: 60px;
+        @include font(100px, 150px, $headlineColor, 800, "Kanit");
+
+        @include media(1400px) {
+          line-height: 130px;
+        }
+
+        @include media(992px) {
+          margin-bottom: 30px;
+          font-size: 80px;
+          line-height: 100px;
+        }
+        @include media(768px) {
+          font-size: 50px;
+          line-height: 80px;
+        }
+      }
+
+      button {
+        width: max-content;
+      }
+    }
+
+    &-right {
+      max-width: 890px;
+      z-index: 1;
+
+      @include media(1400px) {
+        max-width: 700px;
+      }
+
+      @include media(1200px) {
+        max-width: 600px;
+      }
+
+      @include media(992px) {
+        max-width: 100%;
+      }
+
+      img {
+        @include media(1400px) {
+          max-width: 650px;
+        }
+
+        @include media(1200px) {
+          max-width: 600px;
+        }
+
+        @include media(992px) {
+          max-width: 100%;
+        }
+      }
+      
+      span{
+        margin: 0 ;
+      }
+    }
+  }
+}

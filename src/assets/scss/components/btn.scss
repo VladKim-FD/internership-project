@@ -1,0 +1,12 @@
+@import '../common/root';
+@import '../common/common';
+
+.btn{
+    background: $blue;
+    @include font(18px, 22px, $white, 400, 'BrunoAce');
+    padding: 15px 45px;
+}
+
+.btn:hover{
+    cursor: pointer;
+}

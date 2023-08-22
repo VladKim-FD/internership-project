@@ -1,0 +1,80 @@
+@import '../common/root';
+@import '../common/common';
+
+.footer{
+    background: $black;
+    padding: 85px 0;
+    @include media(992px){
+        padding: 50px 0;
+    }
+    &__content{
+        display: flex;
+        justify-content: space-between;
+        @include media(992px){
+            gap: 50px;
+        }
+        @include media(768px){
+            flex-direction: column;
+            gap: 30px;
+        }
+        &-links{
+            display: flex;
+            gap: 185px;
+            @include media(1400px){
+                gap: 90px;
+            }
+            @include media(1200px){
+                gap: 55px;
+            }
+            @include media(992px){
+                justify-content: space-evenly;
+                gap: 30px;
+            }
+            @include media(768px){
+                flex-wrap: wrap;
+            }
+            .first-list, .second-list{
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+                @include media(1400px){
+                    gap: 40px;
+                }
+                @include media(1200px){
+                    gap: 30px;
+                }
+            }
+            .third-list{
+                display: flex;
+                gap: 45px;
+                flex-direction: column;
+                @include media(1400px){
+                    gap: 35px;
+                }
+                @include media(1200px){
+                    gap: 25px;
+                }
+                @include media(480px){
+                    margin-top: 20px;
+                    width: 100%;
+                }
+            }
+            .contacts-list{
+                display: flex;
+                gap: 30px;
+                flex-direction: column;
+                @include media(1200px){
+                    gap: 25px;
+                }
+            }
+            li{
+                display: flex;
+                gap: 15px;
+            }
+            a, p{
+                max-width: 220px;
+                @include font(18px, 22px, $white, 400, 'Questrial')
+            }
+        }
+    }
+}

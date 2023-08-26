@@ -1,5 +1,6 @@
 <template>
-  <footer class="footer">
+  <div>
+    <footer class="footer">
     <div class="container footer__content">
       <div class="footer__content-logo">
         <img src="../assets/icons/footer-logo.svg" alt="" />
@@ -21,24 +22,25 @@
         </ul>
         <ul class="third-list">
           <li>
-            <p>Contacts</p>
+            <h3>Contacts</h3>
           </li>
           <li>
             <img src="../assets/icons/location-icon.svg" alt="" />
-            <p>70 West Buckingham Ave. Farmingdale, NY 11735</p>
+            <a href="">70 West Buckingham Ave. Farmingdale, NY 11735</a>
           </li>
           <li>
             <img src="../assets/icons/phone-icon.svg" alt="" />
-            <p>+88 01911 717 490</p>
+            <a href="">+88 01911 717 490</a>
           </li>
           <li>
             <img src="../assets/icons/letter-icon.svg" alt="" />
-            <p>contact@sportdriven.com</p>
+            <a href="">contact@sportdriven.com</a>
           </li>
         </ul>
       </div>
     </div>
   </footer>
+  </div>
 </template>
 
 <script>

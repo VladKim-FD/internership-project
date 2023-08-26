@@ -1,0 +1,104 @@
+@import "../common/root";
+@import "../common/common";
+
+.shopping__cart {
+  display: flex;
+  gap: 30px;
+  // flex-direction: column;
+
+  &-left {
+    display: flex;
+    // justify-content: space-between;
+    flex-direction: column;
+
+    .titles-left {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 30px;
+      border-bottom: 1px solid $btnBorder;
+      margin-bottom: 60px;
+
+      h2 {
+        letter-spacing: 1.25px;
+        @include font(25px, 25px, $grey, 400, "Questrial");
+      }
+
+      .titles {
+        display: flex;
+      }
+    }
+
+    .content-left {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      .product {
+        padding: 30px;
+        border: 1px solid $btnBorder;
+        display: flex;
+        align-items: center;
+        gap: 60px;
+
+        img {
+          max-width: 150px;
+          max-height: 150px;
+        }
+
+        &-description {
+          max-width: 220px;
+
+          h3 {
+            margin-bottom: 30px;
+            @include font(18px, 27px, $black, 400, 'Questrial')
+          }
+
+          p {
+            @include font(18px, 18px, $greyText, 400, 'Questrial')
+          }
+        }
+
+        &-price {
+          @include font(25px, 25px, $black, 400, 'Questrial')
+        }
+
+        &-btns {
+          display: flex;
+
+          .ordered-quantity {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            @include font(20px, 10px, $black, 400, 'Questrial')
+          }
+        }
+
+        .sum {
+          @include font(25px, 25px, $black, 400, 'Questrial')
+        }
+
+        .delete:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &-right {
+    .titles-right {
+      padding-bottom: 30px;
+      border-bottom: 1px solid $btnBorder;
+      margin-bottom: 60px;
+
+      h2 {
+        letter-spacing: 1.25px;
+        text-transform: uppercase;
+        @include font(25px, 25px, $black, 400, "Questrial");
+      }
+    }
+    .content-right{
+      
+    }
+  }
+
+}

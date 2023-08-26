@@ -1,0 +1,15 @@
+@import "../common/root";
+@import "../common/common";
+
+.orderBtn {
+  padding: 15px;
+  background: $greyBg;
+  font-size: 30px;
+  font-weight: 900;
+  border: none;
+  outline: none;
+}
+
+.orderBtn:hover{
+  cursor: pointer;
+}

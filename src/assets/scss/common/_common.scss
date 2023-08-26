@@ -12,10 +12,17 @@
     --white: #fff;
     --blue: #030A8C;
     --headline-color: linear-gradient(90deg, #121211 23.37%, #3D3D3D 55.51%);
-
+    --btn-border: #F0F0F0;
+    --grey: #3D3D3D;
+    --grey-bg: #EAEAEA;
+    --grey-text: #A5A5A5;
 }
 
 $black: var(--black);
 $white: var(--white);
 $blue: var(--blue);
 $headlineColor: var(--headline-color);
+$btnBorder: var(--btn-border);
+$grey: var(--grey);
+$greyBg: var(--grey-bg);
+$greyText: var(--grey-text);

@@ -3,6 +3,8 @@
 
 .btn{
     background: $blue;
+    border: none;
+    outline: none;
     @include font(18px, 22px, $white, 400, 'BrunoAce');
     padding: 15px 45px;
 }

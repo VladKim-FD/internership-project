@@ -1,0 +1,137 @@
+@import "../common/root";
+@import "../common/common";
+
+.products {
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+
+  &__links {
+    margin-bottom: 75px;
+
+    a {
+      @include font(18px, 22px, $black, 400, "Questrial");
+
+      span {
+        @include font(18px, 22px, $blue, 400, "Questrial");
+      }
+    }
+  }
+
+  &__info {
+    display: flex;
+
+    &-img {
+      width: 50%;
+    }
+
+    &-description {
+      width: 50%;
+
+      h3 {
+        margin-bottom: 40px;
+        @include font(25px, 38px, $black, 400, "Questrial");
+      }
+
+      p {
+        @include font(25px, 26px, $blue, 400, "Questrial");
+      }
+
+      h4 {
+        margin-top: 60px;
+        @include font(25px, 26px, $blue, 400, "Questrial");
+      }
+
+      .description {
+        margin-top: 30px;
+        @include font(18px, 18px, $grey, 400, "Questrial");
+      }
+
+      .products-order {
+        display: flex;
+        align-items: center;
+        margin-top: 70px;
+        gap: 60px;
+
+        button {
+          border: none;
+          outline: none;
+        }
+
+        button:hover {
+          cursor: pointer;
+        }
+
+        .order-btns {
+          display: flex;
+
+          .ordered-quantity {
+            padding: 25px;
+            @include font(20px, 10px, $black, 400, "Questrial");
+          }
+
+          .order-btn {
+            padding: 15px;
+            background: $greyBg;
+            font-size: 30px;
+            font-weight: 900;
+          }
+        }
+
+        .like:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &__extra {
+    margin-top: 100px;
+
+    h2 {
+      text-align: center;
+      margin-bottom: 70px;
+      @include font(25px, 25px, $black, 400, "Questrial");
+    }
+
+    &-content {
+      display: flex;
+      gap: 30px;
+
+      .extra__item {
+        width: 23%;
+
+        &-img {
+          width: 100%;
+          height: 200px;
+          position: relative;
+          a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+
+        &-description {
+          h4 {
+            margin-top: 60px;
+            margin-bottom: 10px;
+            @include font(24px, 36px, $black, 400, "Questrial");
+          }
+
+          p {
+            margin-bottom: 150px;
+            @include font(20px, 30px, $blue, 400, "Kanit");
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,12 +1,13 @@
 <script setup>
-import index from './pages/index.vue';
+import { RouterView } from "vue-router";
+import { useProductStore } from "./stores/store";
+
+const store = useProductStore();
 </script>
 
 <template>
-  <index></index>
-  
+  <RouterView />
 </template>
 
-<style scoped>
-
+<style>
 </style>

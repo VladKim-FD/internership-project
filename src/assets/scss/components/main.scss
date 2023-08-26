@@ -2,225 +2,287 @@
 @import "../common/common";
 
 .categories {
-    padding-top: 150px;
+  padding-top: 70px;
 
-    &__content {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+
+    h2 {
+      margin-bottom: 90px;
+      @include media(1200px) {
+        margin-bottom: 50px;
+      }
+    }
+
+    &-types {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      justify-content: space-between;
+      margin-bottom: 70px;
+      gap: 30px;
+      @include media(1200px) {
+        margin-bottom: 40px;
+      }
+      li {
+        width: 1fr;
+        padding: 8px 4px;
+        @include font(20px, 20px, $black, 400, "Questrial");
+      }
+
+      li::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 2px;
+        background: $blue;
+        transition: width 0.3s;
+      }
+
+      li:hover::after {
+        width: 100%;
+      }
+    }
+
+    &-products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 70px;
+      @include media(992px){
+        gap: 20px;
+      }
+      .product {
+        width: 31%;
+        height: max-content;
         display: flex;
         flex-direction: column;
-        text-align: center;
-
-        h2 {
-            margin-bottom: 90px;
+        align-items: flex-start;
+        @include media(1400px) {
+          width: 48%;
         }
+        @include media(768px){
+          width: 99%;
+        }
+        &-img {
+          padding: 70px 70px;
+          position: relative;
+          @include media(1400px) {
+            padding: 50px 70px;
+          }
+          @include media(1200px) {
+            padding: 30px 70px;
+          }
+          @include media(992px){
+            padding: 0 40px;
+          }
+          @include media(768px){
+             padding: 50px 70px;
+          }
+          a {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+          }
+          &-block {
+            background: none;
 
-        &-types {
+            img {
+              width: 100%;
+              height: 280px;
+              object-fit: contain;
+            }
+          }
+          .icons {
+            position: absolute;
+            top: -100px;
+            left: 30px;
             display: flex;
-            justify-content: center;
-            gap: 130px;
-            margin-bottom: 130px;
-
-            li {
-                padding: 8px 4px;
-                @include font(20px, 20px, $black, 400, "Questrial");
+            flex-direction: column;
+            gap: 40px;
+            visibility: hidden;
+            transition: top 0.5s, visibility 0.5s;
+            @include media(1400px) {
+              left: 20px;
             }
-
-            li::after {
-                content: "";
-                display: block;
-                width: 0;
-                height: 2px;
-                background: $blue;
-                transition: width 0.3s;
+            @include media(992px){
+              left: 5px;
             }
-
-            li:hover::after {
-                width: 100%;
+             @include media(768px) {
+              left: 20px;
             }
+            img {
+              width: 25px;
+              height: 25px;
+            }
+            img:hover {
+              cursor: pointer;
+            }
+          }
         }
 
-        &-products {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 30px;
-
-            .product {
-                width: 23%;
-                height: max-content;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                &-img {
-                    padding: 70px 70px;
-                    position: relative;
-
-                    &-block {
-                        background: none;
-
-                        img {
-                            width: 100%;
-                        }
-                    }
-
-                    .icons {
-                        position: absolute;
-                        top: -100px;
-                        left: 30px;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 40px;
-                        visibility: hidden;
-                        transition: top 0.5s, visibility 0.5s;
-
-                        img {
-                            width: 25px;
-                            height: 25px;
-                        }
-                        img:hover{
-                            cursor: pointer;
-                        }
-                    }
-                }
-
-                &-img:hover {
-                    background: rgba(18, 18, 17, 0.05);
-                        backdrop-filter: blur(1px);
-                    .icons {
-                        top: 40px;
-                        visibility: visible;
-                    }
-                }
-                
-                p{
-                    margin-top: 30px;
-                    margin-bottom: 8px;
-                    @include font(24px, 36px, $black , 400, 'Questrial')
-                }
-                
-                span{
-                    @include font(20px, 30px, $blue, 400, 'Kanit')
-                }
-            }
-
+        &-img:hover {
+          background: rgba(18, 18, 17, 0.05);
+          backdrop-filter: blur(1px);
+          .icons {
+            top: 40px;
+            visibility: visible;
+          }
         }
+
+        p {
+          margin-top: 30px;
+          margin-bottom: 8px;
+          @include font(24px, 36px, $black, 400, "Questrial");
+        }
+
+        span {
+          @include font(20px, 30px, $blue, 400, "Kanit");
+        }
+      }
     }
+
+    &-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 70px;
+      button {
+        // background: transparent;
+        background: $white;
+        border: 1px solid $btnBorder;
+        padding: 10px 15px;
+        @include font(18px, 16px, $black, 400, "Kanit");
+      }
+      button:hover {
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 .more {
-    &__content {
-        display: flex;
-        justify-content: space-between;
-        gap: 30px;
+  margin-bottom: 150px;
+  @include media(1200px) {
+    margin-bottom: 100px;
+  }
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
 
-        @include media(768px) {
-            flex-wrap: wrap;
-        }
-
-        &-left {
-            background: url(/src/assets/images/card-1-bg.png) no-repeat center / cover;
-            height: 400px;
-            width: 50%;
-
-            @include media(768px) {
-                width: 100%;
-            }
-
-            h3 {
-                margin-bottom: 45px;
-                margin-top: 60px;
-                margin-left: 40px;
-                @include font(30px, 30px, $blue, 400, "Questrial");
-
-                @include media(1400px) {
-                    margin-bottom: 15px;
-                }
-
-                @include media(1200px) {
-                    margin-left: 25px;
-                }
-
-                @include media(992px) {
-                    margin-top: 15px;
-                    font-size: 25px;
-                    line-height: 25px;
-                }
-            }
-
-            p {
-                margin-left: 40px;
-                max-width: 350px;
-                letter-spacing: 0.9px;
-                @include font(18px, 27px, $black, 400, "Questrial");
-
-                @include media(1400px) {
-                    max-width: 270px;
-                }
-
-                @include media(1200px) {
-                    margin-left: 25px;
-                    max-width: 230px;
-                }
-
-                @include media(992px) {
-                    line-height: 23px;
-                    max-width: 200px;
-                }
-            }
-        }
-
-        &-right {
-            background: url(/src/assets/images/card-2-bg.png) no-repeat center / cover;
-            height: 400px;
-            width: 50%;
-
-            @include media(768px) {
-                width: 100%;
-            }
-
-            h3 {
-                margin-bottom: 45px;
-                margin-top: 60px;
-                margin-left: 40px;
-                @include font(30px, 30px, $blue, 400, "Questrial");
-
-                @include media(1400px) {
-                    margin-bottom: 15px;
-                }
-
-                @include media(1200px) {
-                    margin-left: 25px;
-                }
-
-                @include media(992px) {
-                    margin-top: 15px;
-                    font-size: 25px;
-                    line-height: 25px;
-                }
-            }
-
-            p {
-                margin-left: 40px;
-                max-width: 430px;
-                letter-spacing: 0.9px;
-                @include font(18px, 27px, $black, 400, "Questrial");
-
-                @include media(1500px) {
-                    max-width: 400px;
-                }
-
-                @include media(1200px) {
-                    margin-left: 25px;
-                }
-
-                @include media(1400px) {
-                    max-width: 300px;
-                }
-
-                @include media(992px) {
-                    line-height: 23px;
-                    max-width: 230px;
-                }
-            }
-        }
+    @include media(768px) {
+      flex-wrap: wrap;
     }
+
+    &-left {
+      background: url(/src/assets/images/card-1-bg.png) no-repeat center / cover;
+      height: 400px;
+      width: 50%;
+
+      @include media(768px) {
+        width: 100%;
+      }
+
+      h3 {
+        margin-bottom: 45px;
+        margin-top: 60px;
+        margin-left: 40px;
+        @include font(30px, 30px, $blue, 400, "Questrial");
+
+        @include media(1400px) {
+          margin-bottom: 15px;
+        }
+
+        @include media(1200px) {
+          margin-left: 25px;
+        }
+
+        @include media(992px) {
+          margin-top: 15px;
+          font-size: 25px;
+          line-height: 25px;
+        }
+      }
+
+      p {
+        margin-left: 40px;
+        max-width: 350px;
+        letter-spacing: 0.9px;
+        @include font(18px, 27px, $black, 400, "Questrial");
+
+        @include media(1400px) {
+          max-width: 270px;
+        }
+
+        @include media(1200px) {
+          margin-left: 25px;
+          max-width: 230px;
+        }
+
+        @include media(992px) {
+          line-height: 23px;
+          max-width: 200px;
+        }
+      }
+    }
+
+    &-right {
+      background: url(/src/assets/images/card-2-bg.png) no-repeat center / cover;
+      height: 400px;
+      width: 50%;
+
+      @include media(768px) {
+        width: 100%;
+      }
+
+      h3 {
+        margin-bottom: 45px;
+        margin-top: 60px;
+        margin-left: 40px;
+        @include font(30px, 30px, $blue, 400, "Questrial");
+
+        @include media(1400px) {
+          margin-bottom: 15px;
+        }
+
+        @include media(1200px) {
+          margin-left: 25px;
+        }
+
+        @include media(992px) {
+          margin-top: 15px;
+          font-size: 25px;
+          line-height: 25px;
+        }
+      }
+
+      p {
+        margin-left: 40px;
+        max-width: 430px;
+        letter-spacing: 0.9px;
+        @include font(18px, 27px, $black, 400, "Questrial");
+
+        @include media(1500px) {
+          max-width: 400px;
+        }
+
+        @include media(1200px) {
+          margin-left: 25px;
+        }
+
+        @include media(1400px) {
+          max-width: 300px;
+        }
+
+        @include media(992px) {
+          line-height: 23px;
+          max-width: 230px;
+        }
+      }
+    }
+  }
 }

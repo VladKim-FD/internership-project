@@ -17,7 +17,7 @@
             <a href="#!">Payment and delivery</a>
           </li>
           <li>
-            <a href="#!">Like</a>
+            <RouterLink :to="`/likedProducts`">Like</RouterLink>
           </li>
         </ul>
         <ul class="third-list">

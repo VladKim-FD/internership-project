@@ -4,6 +4,27 @@ import { useProductStore } from "../stores/store.js";
 import orderBtn from "./orderBtn.vue";
 const productStore = useProductStore();
 const orderedProducts = computed(() => productStore.getOrderedProducts);
+const subTotalSum = computed(() => productStore.getSubTotalSum);
+
+
+function increase(product){
+ product.amount++; 
+ product.totalSum = product.price * product.amount;
+ product.discountSum = (100 - product.discountPercentage) / 100 * (product.price * product.amount);
+}
+
+function decrease(product){
+  if(product.amount > 0){
+    product.amount--; 
+    product.totalSum = product.price * product.amount;
+    product.discountSum = (100 - product.discountPercentage) / 100 * (product.price * product.amount);
+  }
+}
+
+function deleteProduct(product){
+ product.amount = 0
+ product.totalSum = 0
+}
 
 </script>
 
@@ -28,14 +49,14 @@ const orderedProducts = computed(() => productStore.getOrderedProducts);
             </div>
             <p class="product-price">$ {{ product.price }}</p>
             <div class="product-btns">
-              <orderBtn text="-"></orderBtn>
+              <orderBtn text="-" @click="decrease(product)"></orderBtn>
               <div class="ordered-quantity">
                 {{ product.amount > 0 ? product.amount : 0 }}
               </div>
-              <orderBtn text="+"></orderBtn>
+              <orderBtn text="+" @click="increase(product)"></orderBtn>
             </div>
             <div class="sum">$ {{ product.totalSum }}</div>
-            <div class="delete">
+            <div class="delete" @click="deleteProduct(product)">
               <img src="../assets/icons/delete.svg" alt="">
             </div>
           </div>
@@ -46,7 +67,15 @@ const orderedProducts = computed(() => productStore.getOrderedProducts);
           <h2>Cart Totals</h2>
         </div>
         <div class="content-right">
-          
+          <div class="subtotal-sum">
+            <h4>Subtotal</h4>
+            <p>{{ !subTotalSum ? 0 : subTotalSum  }}</p>
+          </div>
+          <div class="discount">
+            <h4>Discount</h4>
+            <p>{{  }}</p>
+          </div>
+          <div class="total-sum"></div>
         </div>
       </div>
     </div>

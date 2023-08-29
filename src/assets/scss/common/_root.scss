@@ -39,3 +39,13 @@ $fonts: ( 'Questrial', 'Regular', 400), ('BrunoAce', 'Regular', 400), ('Kanit', 
         font-weight: $weight;
     }
 }
+
+$icons: ('solid-900', 900), ('regular-400', 400);
+
+@each $name, $weight in $icons {
+    @font-face {
+        font-family: 'icons';
+        src: url('/src/assets/fonts/fotsawesome/webfonts/fa-#{$name}.ttf') format('truetype');
+        font-weight: $weight;
+    }
+}

@@ -9,12 +9,14 @@ onMounted(async () => {
 });
 
 let products = computed(() => productStore.products);
+let categoriesArr = computed(() => productStore.getCategories);
+
 console.log(products);
 // pagination
 
 let productsArr = ref([]);
 productsArr.value = products.value;
-let categories = computed(() => productStore.categories);
+let categories = computed(() => productStore.getCategories);
 
 let productsPerPage = 12;
 let currentPage = ref(1);
@@ -38,6 +40,7 @@ arrGoods.value = products.value;
 let changeProducts = (elem) => {
   filter = true;
   arrGoods.value = products.value.filter((product) => product.category == elem);
+  console.log(arrGoods.value);
 };
 
 // going to another page
@@ -45,6 +48,14 @@ let changeProducts = (elem) => {
 function openProduct(id) {
   productStore.id = id;
 }
+
+// like product
+
+function likeProduct(event, product){
+event.target.classList.add('active')
+product.liked = !product.liked
+}
+
 </script>
 
 <template>
@@ -52,24 +63,19 @@ function openProduct(id) {
     <div class="container categories__content">
       <h2>Categories</h2>
       <ul class="categories__content-types" ref="categories">
-        <li v-for="category in categories" @click="changeProducts(category)">
+        <li v-for="category in categoriesArr" @click="changeProducts(category)">
           {{ category }}
         </li>
       </ul>
       <div class="categories__content-products">
-        <div
-          class="product"
-          v-for="product in productsArr"
-          v-show="filter == false"
-        >
+        <div class="product" v-for="product in productsArr" v-show="filter == false">
           <div class="product-img">
-            <RouterLink
-              :to="`/productCard/${product.id}`"
-              @click="openProduct(product.id)"
-            ></RouterLink>
+            <RouterLink :to="`/productCard/${product.id}`" @click="openProduct(product.id)"></RouterLink>
             <div class="icons">
               <img src="../assets/icons/cart.svg" alt="" />
-              <img src="../assets/icons/like.svg" alt="" />
+              <!-- <img src="../assets/icons/like.svg" alt="" /> -->
+              <!-- <div class="icon-cart"></div> -->
+              <div class="icon-like" @click="likeProduct($event, product)"></div>
             </div>
             <div class="product-img-block">
               <img :src="product.thumbnail" alt="" />
@@ -78,16 +84,9 @@ function openProduct(id) {
           <p>{{ product.title }}</p>
           <span>$ {{ product.price }}</span>
         </div>
-        <div
-          class="product"
-          v-show="filter == true"
-          v-for="product in arrGoods"
-        >
+        <div class="product" v-show="filter == true" v-for="product in arrGoods">
           <div class="product-img">
-            <RouterLink
-              :to="`/productCard/${product.id}`"
-              @click="openProduct(product.id)"
-            ></RouterLink>
+            <RouterLink :to="`/productCard/${product.id}`" @click="openProduct(product.id)"></RouterLink>
             <div class="icons">
               <img src="../assets/icons/cart.svg" alt="" />
               <img src="../assets/icons/like.svg" alt="" />
@@ -101,10 +100,7 @@ function openProduct(id) {
         </div>
       </div>
       <div class="categories__content-buttons">
-        <button
-          v-for="btn in pagesQuantity"
-          @click="(currentPage = btn), (filter = false)"
-        >
+        <button v-for="btn in pagesQuantity" @click="(currentPage = btn), (filter = false)">
           {{ btn }}
         </button>
       </div>

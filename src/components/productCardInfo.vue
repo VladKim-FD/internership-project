@@ -3,18 +3,47 @@ import { computed, ref } from "vue";
 import { useProductStore } from "../stores/store.js";
 import btn from "./btn.vue";
 import orderBtn from "./orderBtn.vue";
-import shoppingCartVue from "../pages/shoppingCart.vue";
+// import shoppingCartVue from "../pages/shoppingCart.vue";
 const productStore = useProductStore();
 const product = computed(() => productStore.getProduct);
+const products = computed(() => productStore.products);
+const images = product.value.images;
 const extraProducts = computed(() => productStore.getExtraProducts);
-// let orderMade = false;
+
+let activeImg = computed(() => product.value.thumbnail);
+
+function changeImg(img) {
+  activeImg = img;
+  console.log(activeImg);
+}
 
 function increase(product) {
   if (product.amount == undefined) {
     product.amount = 0;
-    product.amount++;
   } else {
     product.amount++;
+   if(!product.hasOwnProperty('getTotalSum')){
+    Object.defineProperty(product, 'getTotalSum', {
+      get() {
+        return this.price * this.amount;
+      },
+    }
+    )
+   }
+   if(!product.hasOwnProperty('getDiscountSum')){
+    Object.defineProperty(product, 'getDiscountSum', {
+      get() {
+        return (100 - this.discountPercentage) / 100 * (this.price * this.amount);
+      },
+    }
+    )
+   }
+   this.product.totalSum = this.product.getTotalSum
+   this.product.discountSum = this.product.getDiscountSum
+    console.log(product);
+    console.log(products);
+   
+    localStorage.setItem("productStore", JSON.stringify(productStore));
   }
 }
 
@@ -22,6 +51,14 @@ function decrease(product) {
   if (product.amount > 0) {
     product.amount--;
   }
+  if(!product.hasOwnProperty('totalSum')){
+    Object.defineProperty(product, 'totalSum', {
+      get() {
+        return this.price * this.amount;
+      },
+    }
+    )
+   }
 }
 
 // going to another page
@@ -39,7 +76,12 @@ function openProduct(id) {
       </div>
       <div class="products__info">
         <div class="products__info-img">
-          <img :src="product.thumbnail" alt="" />
+          <div class="img-gallery">
+            <div class="img-good" v-for="image in images" @click="changeImg(image)">
+              <img :src="image" alt="">
+            </div>
+          </div>
+          <img :src="activeImg" alt="" class="main-img" />
         </div>
         <div class="products__info-description">
           <h3>{{ product.title }}</h3>
@@ -64,16 +106,9 @@ function openProduct(id) {
       <div class="products__extra">
         <h2>You may be interested in</h2>
         <div class="products__extra-content">
-          <div
-            class="extra__item"
-            v-for="extraProduct in extraProducts"
-            :key="extraProduct.id"
-          >
+          <div class="extra__item" v-for="extraProduct in extraProducts" :key="extraProduct.id">
             <div class="extra__item-img">
-              <RouterLink
-                :to="`/productCard/${extraProduct.id}`"
-                @click="openProduct(extraProduct.id)"
-              ></RouterLink>
+              <RouterLink :to="`/productCard/${extraProduct.id}`" @click="openProduct(extraProduct.id)"></RouterLink>
               <img :src="extraProduct.thumbnail" alt="" />
             </div>
             <div class="extra__item-description">

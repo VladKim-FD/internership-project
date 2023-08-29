@@ -20,9 +20,24 @@
 
   &__info {
     display: flex;
-
+    gap: 70px;
     &-img {
-      width: 50%;
+      width: 80%;
+      display: flex;
+      gap: 70px;
+      .img-good{
+        padding: 10px 20px;
+        img{
+          width: 90px;
+          height: 90px;
+        }
+      }
+      .img-good:hover{
+        cursor: pointer;
+      }
+      .main-img{
+        width: 80%;
+      }
     }
 
     &-description {

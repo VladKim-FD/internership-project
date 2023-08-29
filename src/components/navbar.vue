@@ -6,7 +6,6 @@ import { useProductStore } from "../stores/store.js";
 const productStore = useProductStore();
 const totalQuantity = computed(() => productStore
   .getTotalQuantity);
-  console.log(totalQuantity);
 let isActive = ref(false);
 
 function menuToggle() {
@@ -25,7 +24,7 @@ function menuToggle() {
       <div class="nav__content-links" ref="navbarMenu" :class="{ active: isActive }">
         <ul class="nav__content-links-list">
           <li>
-            <a href="#!">Home</a>
+            <router-link :to="`/`" >Home</router-link>
           </li>
           <li>
             <a href="#!">Product card</a>
@@ -39,6 +38,7 @@ function menuToggle() {
         </ul>
         <div class="nav__content-links-right">
           <div class="cart-logo">
+            <router-link :to="`/shoppingCart`"></router-link>
             <img src="../assets/icons/cart-icon.svg" alt="" />
             <div class="totalQuantity">{{ totalQuantity != NaN ? totalQuantity : 0 }}</div>
           </div>

@@ -16,6 +16,7 @@
     --grey: #3D3D3D;
     --grey-bg: #EAEAEA;
     --grey-text: #A5A5A5;
+    --red: red;
 }
 
 $black: var(--black);
@@ -26,3 +27,24 @@ $btnBorder: var(--btn-border);
 $grey: var(--grey);
 $greyBg: var(--grey-bg);
 $greyText: var(--grey-text);
+$red: var(--red);
+
+.icon{
+    &-like::before{
+        font-family: 'icons';
+        font-weight: 400; 
+        font-size: 25px;
+        content: '\f004';
+        color: $blue;
+    }
+    &-like.active::before{
+        color: $red;
+    }
+    &-cart::before{
+        content: '\f07a';
+        font-weight: 400; 
+        font-size: 25px;
+        content: '\f004';
+        color: $blue;
+    }
+}

@@ -66,6 +66,19 @@ function decrease(product) {
 function openProduct(id) {
   productStore.id = id;
 }
+
+// likeProduct
+
+function likeProduct(event, product) {
+  if(event.target.classList.contains('active')){
+    event.target.classList.remove('active')
+  }else{
+    event.target.classList.add('active')
+  }
+  
+  product.liked = !product.liked
+  console.log(product.liked);
+}
 </script>
 
 <template>
@@ -99,7 +112,10 @@ function openProduct(id) {
             <RouterLink :to="`/shoppingCart`">
               <btn text="Buy NOW"></btn>
             </RouterLink>
-            <img src="../assets/icons/like.svg" alt="" class="like" />
+            <!-- <img src="../assets/icons/like.svg" alt="" class="like" 
+            @click="likeProduct($event, product)"
+            /> -->
+            <div class="icon-like" @click="likeProduct($event, product)"></div>
           </div>
         </div>
       </div>

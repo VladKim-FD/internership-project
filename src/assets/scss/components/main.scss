@@ -3,9 +3,11 @@
 
 .categories {
   padding-top: 70px;
-  @include media(576px){
+
+  @include media(576px) {
     padding-top: 50px;
   }
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -36,14 +38,15 @@
         margin-bottom: 30px;
       }
 
-      @include media(480px){
+      @include media(480px) {
         grid-template-columns: repeat(2, 1fr);
       }
-      
+
       li {
         width: 1fr;
-        padding: 8px 4px;
+        // padding: 8px 4px;
         @include font(20px, 20px, $black, 400, "Questrial");
+        position: relative;
       }
 
       li::after {
@@ -53,6 +56,9 @@
         height: 2px;
         background: $blue;
         transition: width 0.1s;
+        position: absolute;
+        left: 0;
+        bottom: -10px;
       }
 
       li:hover::after {
@@ -117,7 +123,7 @@
           // @include media(480px) {
           //   padding: 0px 70px;
           // }
-          
+
           a {
             width: 100%;
             position: absolute;
@@ -139,13 +145,14 @@
 
           .icons {
             position: absolute;
+            // overflow: hidden;
             top: -100px;
             left: 30px;
             display: flex;
             flex-direction: column;
             gap: 40px;
             visibility: hidden;
-            transition: top 0.5s, visibility 0.5s;
+            transition: top 0.5s;
 
             @include media(1400px) {
               left: 20px;
@@ -207,6 +214,11 @@
 
       button:hover {
         cursor: pointer;
+      }
+      
+      button.active{
+        background: $blue;
+        color: $white;
       }
     }
   }

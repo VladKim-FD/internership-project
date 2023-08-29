@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,7 +7,11 @@
     font-family: 'tt norms';
 }
 
-:root{
+body.active {
+    overflow: hidden;
+}
+
+:root {
     --black: #121211;
     --white: #fff;
     --blue: #030A8C;
@@ -29,22 +33,24 @@ $greyBg: var(--grey-bg);
 $greyText: var(--grey-text);
 $red: var(--red);
 
-.icon{
-    &-like::before{
+.icon {
+    &-like::before {
         font-family: 'icons';
-        font-weight: 400; 
+        font-weight: 400;
         font-size: 25px;
         content: '\f004';
         color: $blue;
     }
-    &-like.active::before{
+
+    &-like.active::before {
         color: $red;
     }
-    &-cart::before{
+
+    &-cart::before {
         content: '\f07a';
-        font-weight: 400; 
+        font-weight: 400;
         font-size: 25px;
-        content: '\f004';
-        color: $blue;
+        font-family: 'icons';
+        color: $black;
     }
 }

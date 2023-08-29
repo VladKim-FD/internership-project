@@ -8,9 +8,15 @@ const totalQuantity = computed(() => productStore
   .getTotalQuantity);
 let isActive = ref(false);
 
+let body = app.parentElement;
+console.log(body);
 function menuToggle() {
   isActive.value = !isActive.value;
-  console.log(isActive.value);
+  if(body.classList.contains('active')){
+    body.classList.remove('active')
+  }else{
+    body.classList.add('active')
+  }
 }
 </script>
 
@@ -39,8 +45,11 @@ function menuToggle() {
         <div class="nav__content-links-right">
           <div class="cart-logo">
             <router-link :to="`/shoppingCart`"></router-link>
-            <img src="../assets/icons/cart-icon.svg" alt="" />
-            <div class="totalQuantity">{{ totalQuantity != NaN ? totalQuantity : 0 }}</div>
+            <!-- <img src="../assets/icons/cart-icon.svg" alt="" /> -->
+            <div class="icon-cart cart"></div>
+            <div class="totalQuantity">
+              <p>{{ totalQuantity != NaN ? totalQuantity : 0 }}</p>
+            </div>
           </div>
           <btn text="Login"></btn>
         </div>

@@ -8,7 +8,7 @@
       <div class="footer__content-links">
         <ul class="first-list">
           <li>
-            <a href="#!">Home</a>
+            <router-link :to="`/`">Home</router-link>
           </li>
           <li><a href="#!">Product card</a></li>
         </ul>

@@ -1,63 +1,3 @@
-<script setup>
-import { computed, ref, onMounted } from "vue";
-import { useProductStore } from "../stores/store.js";
-import { RouterLink } from "vue-router";
-const productStore = useProductStore();
-
-onMounted(async () => {
-  await productStore.getProducts();
-});
-
-let products = computed(() => productStore.products);
-let categoriesArr = computed(() => productStore.getCategories);
-
-console.log(products);
-// pagination
-
-let productsArr = ref([]);
-productsArr.value = products.value;
-let categories = computed(() => productStore.getCategories);
-
-let productsPerPage = 12;
-let currentPage = ref(1);
-let pagesQuantity = computed(() => {
-  let pages = Math.ceil(products.value.length / productsPerPage);
-  return pages;
-});
-
-productsArr = computed(() => {
-  let from = (currentPage.value - 1) * productsPerPage;
-  let to = from + productsPerPage;
-  return products.value.slice(from, to);
-});
-
-// filtering products
-
-let filter = false;
-let arrGoods = ref(products.value);
-arrGoods.value = products.value;
-
-let changeProducts = (elem) => {
-  filter = true;
-  arrGoods.value = products.value.filter((product) => product.category == elem);
-  console.log(arrGoods.value);
-};
-
-// going to another page
-
-function openProduct(id) {
-  productStore.id = id;
-}
-
-// like product
-
-function likeProduct(event, product){
-event.target.classList.add('active')
-product.liked = !product.liked
-}
-
-</script>
-
 <template>
   <div class="categories" v-if="arrGoods">
     <div class="container categories__content">
@@ -100,7 +40,7 @@ product.liked = !product.liked
         </div>
       </div>
       <div class="categories__content-buttons">
-        <button v-for="btn in pagesQuantity" @click="(currentPage = btn), (filter = false)">
+        <button v-for="btn in pagesQuantity" @click="clickBtn(), (currentPage = btn)" ref="btns" >
           {{ btn }}
         </button>
       </div>
@@ -127,6 +67,83 @@ product.liked = !product.liked
     </div>
   </div>
 </template>
+
+<script setup>
+import { computed, ref, onMounted } from "vue";
+import { useProductStore } from "../stores/store.js";
+import { RouterLink } from "vue-router";
+const productStore = useProductStore();
+
+onMounted(async () => {
+  await productStore.getProducts();
+});
+
+let products = computed(() => productStore.products);
+let categoriesArr = computed(() => productStore.getCategories);
+
+// pagination
+
+let productsArr = ref([]);
+productsArr.value = products.value;
+let categories = computed(() => productStore.getCategories);
+
+let productsPerPage = 12;
+let currentPage = ref(1);
+let pagesQuantity = computed(() => {
+  let pages = Math.ceil(products.value.length / productsPerPage);
+  return pages;
+});
+
+productsArr = computed(() => {
+  let from = (currentPage.value - 1) * productsPerPage;
+  let to = from + productsPerPage;
+  return products.value.slice(from, to);
+});
+
+let filter = false;
+let btns = ref("btns");
+
+function clickBtn() {
+  filter = false;
+  console.log(btns);
+  console.log(event.target);
+  event.target.classList.add("active")
+  for(let i = 0; i < btns.value.length; i++){
+    if(btns.value[i] != event.target){
+      btns.value[i].classList.remove('active')
+    }
+  }
+}
+
+// filtering products
+
+let arrGoods = ref(products.value);
+arrGoods.value = products.value;
+
+let changeProducts = (elem) => {
+  filter = true;
+  arrGoods.value = products.value.filter((product) => product.category == elem);
+  console.log(arrGoods.value);
+};
+
+// going to another page
+
+function openProduct(id) {
+  productStore.id = id;
+}
+
+// like product
+
+function likeProduct(event, product) {
+  if(event.target.classList.contains('active')){
+    event.target.classList.remove('active')
+  }else{
+    event.target.classList.add('active')
+  }
+  product.liked = !product.liked
+}
+
+</script>
 
 <style>
 @import "../assets/scss/components/main.scss";

@@ -73,6 +73,12 @@
       @include media(992px) {
         max-width: 100%;
       }
+      
+      .swiper{
+        @include media(1200px){
+          max-width: 500px;
+        }
+      }
 
       img {
         @include media(1400px) {
@@ -80,7 +86,7 @@
         }
 
         @include media(1200px) {
-          max-width: 600px;
+          max-width: 500px;
         }
 
         @include media(992px) {

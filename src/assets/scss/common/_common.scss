@@ -18,6 +18,7 @@ body.active {
     --headline-color: linear-gradient(90deg, #121211 23.37%, #3D3D3D 55.51%);
     --btn-border: #F0F0F0;
     --grey: #3D3D3D;
+    --grey-light: #3D3D3D33;
     --grey-bg: #EAEAEA;
     --grey-text: #A5A5A5;
     --red: red;
@@ -29,6 +30,7 @@ $blue: var(--blue);
 $headlineColor: var(--headline-color);
 $btnBorder: var(--btn-border);
 $grey: var(--grey);
+$greyLight: var(--grey-light);
 $greyBg: var(--grey-bg);
 $greyText: var(--grey-text);
 $red: var(--red);
@@ -52,5 +54,12 @@ $red: var(--red);
         font-size: 25px;
         font-family: 'icons';
         color: $black;
+    }
+
+    &-close::before {
+        content: '\f00d';
+        font-family: 'icons';
+        color: $white;
+        font-size: 40px;
     }
 }

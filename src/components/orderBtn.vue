@@ -1,5 +1,8 @@
 <template>
-  <button class="orderBtn">{{ text }}</button>
+  <button class="orderBtn">
+    <!-- <p>{{ text }}</p> -->
+    {{ text }}
+  </button>
 </template>
 
 <script>

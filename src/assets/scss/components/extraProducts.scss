@@ -1,0 +1,76 @@
+@import "../common/root";
+@import "../common/common";
+
+.products__extra {
+    margin-top: 200px;
+    @include media(1400px){
+      margin-top: 150px;
+    }
+    @include media(1200px){
+      margin-top: 50px;
+    }
+    @include media(992px){
+      margin-top: 100px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 70px;
+      text-transform: uppercase;
+      @include font(25px, 25px, $black, 400, "Questrial");
+    }
+
+    &-content {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 150px;
+      @include media(992px){
+        margin-bottom: 100px;
+      }
+      .extra__item {
+        width: 22%;
+       @include media(1200px){
+        width: 31%;
+       }
+       @include media(992px){
+        width: 47%;
+       }
+       @include media(576px){
+        width: 100%;
+       }
+        &-img {
+          width: 100%;
+          height: 200px;
+          position: relative;
+
+          a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+
+        &-description {
+          h4 {
+            margin-top: 60px;
+            margin-bottom: 10px;
+            @include font(24px, 36px, $black, 400, "Questrial");
+
+          }
+
+          p {
+            // margin-bottom: 150px;
+            @include font(20px, 30px, $blue, 400, "Kanit");
+          }
+        }
+      }
+    }
+  }

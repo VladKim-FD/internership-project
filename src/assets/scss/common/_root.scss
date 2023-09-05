@@ -19,20 +19,45 @@
     width: 100%;
     margin: 0 auto;
     padding: 0 15px;
-    @include media(1400px){max-width: 1140px;}
-    @include media(1200px){max-width: 960px;}
-    @include media(992px){max-width: 720px;}
-    @include media(768px){max-width: 540px;}
-    @include media(576px){max-width: 100%;}
+
+    @include media(1400px) {
+        max-width: 1140px;
+    }
+
+    @include media(1200px) {
+        max-width: 960px;
+    }
+
+    @include media(992px) {
+        max-width: 720px;
+    }
+
+    @include media(768px) {
+        max-width: 540px;
+    }
+
+    @include media(576px) {
+        max-width: 100%;
+    }
 }
 
-.container{
+.container {
     @include container();
 }
 
-$fonts: ( 'Questrial', 'Regular', 400), ('BrunoAce', 'Regular', 400), ('Kanit', 'ExtraBold', 800);
+$fonts: (
+    'Questrial',
+    'Regular',
+    400),
+    ('BrunoAce', 'Regular', 400),
+    ('Kanit', 'ExtraBold', 800),
+    ('Kanit', 'Light', 300
+);
 
-@each $font, $name, $weight in $fonts{
+
+@each $font,
+$name,
+$weight in $fonts {
     @font-face {
         font-family: $font;
         src: url('../assets/fonts/#{$font}-#{$name}.ttf') format('truetype');
@@ -40,9 +65,14 @@ $fonts: ( 'Questrial', 'Regular', 400), ('BrunoAce', 'Regular', 400), ('Kanit', 
     }
 }
 
-$icons: ('solid-900', 900), ('regular-400', 400);
+$icons: (
+    'solid-900',
+    900),
+    ('regular-400', 400
+);
 
-@each $name, $weight in $icons {
+@each $name,
+$weight in $icons {
     @font-face {
         font-family: 'icons';
         src: url('/src/assets/fonts/fotsawesome/webfonts/fa-#{$name}.ttf') format('truetype');

@@ -1,0 +1,200 @@
+@import "../common/root";
+@import "../common/common";
+
+.form__block {
+    // width: 50%;
+
+    @include media(1200px) {
+        width: unset;
+    }
+
+    h2 {
+        margin-bottom: 85px;
+        @include font(25px, 25px, $black, 400, 'Questrial')
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 65px;
+        max-width: 810px;
+        width: 100%;
+
+        @include media(1200px) {
+            max-width: unset;
+        }
+
+        input,
+        textarea, select {
+            @include font(18px, 15px, $black, 400, 'Questrial')
+        }
+
+        textarea{
+            padding: 20px;
+        }
+
+        div {
+            display: flex;
+            gap: 30px;
+
+            @include media(480px) {
+                flex-wrap: wrap;
+            }
+
+            label {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                @include font(18px, 15px, $black, 400, 'Questrial');
+                max-width: 390px;
+                width: 100%;
+
+                @include media(1200px) {
+                    max-width: unset;
+                    width: 100%;
+                }
+
+                input,
+                select {
+                    height: 50px;
+                    padding: 10px 15px 10px 15px;
+                }
+
+                select {
+                    option {
+                        @include font(18px, 27px, $black, 300, 'Kanit')
+                    }
+
+                    option:first-child {
+                        @include font(18px, 27px, $btnBorder, 300, 'Kanit');
+
+                    }
+
+                    .first-option {
+                        @include font(18px, 27px, $btnBorder, 300, 'Kanit');
+                    }
+                }
+
+                pre {
+                    width: 100%;
+                }
+            }
+
+            .extra-address {
+                // align-self: center;
+                padding-top: 35px;
+                gap: unset;
+            }
+        }
+
+        .location-inputs {
+            .country-select {
+                @include media(1400px) {
+                    max-width: 228px;
+                }
+
+                @include media(1200px) {
+                    max-width: unset;
+                }
+
+                @include media(768px) {
+                    max-width: 240px;
+                }
+
+                @include media(480px) {
+                    max-width: 200px;
+                }
+            }
+
+            // input {
+            //     max-width: 390px;
+            //     width: 100%;
+            // }
+        }
+
+        .contact-inputs {
+            @include media(768px) {
+                flex-direction: column;
+            }
+
+            p {
+                @include font(18px, 15px, $black, 400, 'Questrial')
+            }
+
+            .phone-inputs {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                max-width: 390px;
+                width: 100%;
+
+                @include media(1200px) {
+                    max-width: unset;
+                }
+
+                .phone-code {
+                    select {
+                        padding: 13px 16px;
+                        height: 50px;
+                        max-width: 110px;
+                        @include font(18px, 15px, $black, 400, 'Questrial');
+
+                        @include media(1400px) {
+                            padding: 13px 10px;
+                            max-width: 73px;
+                        }
+
+                        // @include media(768px) {
+                        //     max-width: 50px;
+                        // }
+
+                        option {
+                            @include font(18px, 15px, $black, 400, 'Questrial')
+                        }
+                    }
+
+                    div {
+                        display: flex;
+                        flex-direction: column;
+                        max-width: 250px;
+                        width: 100%;
+
+
+                    }
+
+                    input {
+                        max-width: 250px;
+                        width: 100%;
+                        height: 50px;
+
+                        @include media(1200px) {
+                            max-width: unset;
+                        }
+                    }
+                }
+            }
+        }
+
+        .different-address {
+            gap: 20px;
+            align-items: center;
+
+            input {
+                width: 25px;
+                height: 25px;
+
+            }
+        }
+
+        .other-notes {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            @include font(18px, 15px, $black, 400, 'Questrial');
+
+            textarea {
+                resize: none;
+            }
+        }
+    }
+}

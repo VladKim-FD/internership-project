@@ -1,0 +1,139 @@
+@import "../common/root";
+@import "../common/common";
+
+
+
+.liked__products {
+    display: flex;
+    flex-direction: column;
+
+    &-links {
+        margin-bottom: 150px;
+        display: flex;
+        gap: 5px;
+
+        @include media(1200px) {
+            margin-bottom: 110px;
+        }
+
+        @include media(768px) {
+            margin-bottom: 90px;
+        }
+
+        a {
+            @include font(18px, 18px, $blue, 400, 'Questrial');
+        }
+
+        .first-link {
+            color: $black;
+        }
+    }
+
+    &-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-bottom: 150px;
+
+        @include media(992px) {
+            margin-bottom: 120px;
+        }
+
+        @include media(576px) {
+            justify-content: center;
+        }
+
+        .item {
+            width: 22%;
+
+            @include media(1400px) {
+                width: 31%;
+            }
+
+            @include media(1200px) {
+                width: 47%
+            }
+
+            @include media(768px) {
+                width: 100%;
+            }
+
+            &__img {
+                width: 100%;
+                height: 300px;
+                margin-bottom: 60px;
+                position: relative;
+                padding: 70px 70px;
+                position: relative;
+                @include media(1200px){
+                    height: 400px;
+                }
+                @include media(992px){
+                    height: 300px;
+                }
+                @include media(768px){
+                    height: unset;
+                }
+                @include media(576px) {
+                    margin-bottom: unset;
+                }
+
+                .icons {
+                    position: absolute;
+                    top: -10px;
+                    left: 30px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 40px;
+                    visibility: hidden;
+                    transition: top 1s;
+
+                    img,
+                    div {
+                        width: 25px !important;
+                        height: 25px !important;
+                    }
+                }
+
+                a {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            &__img:hover {
+                background: rgba(18, 18, 17, 0.05);
+                backdrop-filter: blur(1px);
+                transition: background 0.5s;
+
+                .icons {
+                    visibility: visible;
+                    top: 40px;
+
+                }
+            }
+
+            h3 {
+                margin-bottom: 8px;
+                @include font(24px, 36px, $black, 400, 'Questrial')
+            }
+
+            p {
+                @include font(20px, 30px, $blue, 400, 'Kanit')
+            }
+        }
+
+        h4{
+            margin-bottom: 50px;
+            @include font(25px, 38px, $black, 400, 'Questrial')
+        }
+    }
+}

@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import axios from "axios";
 
 export const useProductStore = defineStore("productStore", {
+
   state: () => {
     if (localStorage.getItem("productStore")) {
       return JSON.parse(localStorage.getItem("productStore"));
@@ -11,6 +12,8 @@ export const useProductStore = defineStore("productStore", {
       products: [],
       categories: [],
       orderedProducts: [],
+      countries: [],
+      phoneCodes: [],
       id: Number,
     };
   },
@@ -53,18 +56,30 @@ export const useProductStore = defineStore("productStore", {
       }
       return subTotalSum;
     },
+    getDiscountSum() {
+      let discountSum = 0;
+      for (let j = 0; j < this.products.length; j++) {
+        discountSum += this.products[j].discountSum;
+      }
+      return Math.floor(discountSum);
+    },
+    getTotalSum() {
+      let totalSum = 0;
+      for (let m = 0; m < this.products.length; m++) {
+        totalSum += this.products[m].totalSum - this.products[m].discountSum;
+      }
+      return Math.ceil(totalSum);
+    },
     getTotalQuantity() {
       let totalQuantity = 0;
       for (let j = 0; j < this.products.length; j++) {
-        // totalQuantity += this.products[j].amount;
-        // console.log(this.products[j].amount);
         if (this.products[j].amount != undefined) {
           totalQuantity += this.products[j].amount;
         } else {
           totalQuantity = 0
         }
       }
-      console.log(totalQuantity);
+
       return totalQuantity;
     },
   },
@@ -75,14 +90,56 @@ export const useProductStore = defineStore("productStore", {
           `https://dummyjson.com/products/?&limit=50`
         );
         this.products = response.data.products;
+        const productStore = JSON.parse(localStorage.getItem("productStore"))?.products;
         for (let i = 0; i < this.products.length; i++) {
-          this.products[i].amount = JSON.parse(localStorage.getItem("productStore")).products[i].amount == undefined ? 0 : JSON.parse(localStorage.getItem("productStore")).products[i].amount
-          this.products[i].totalSum = JSON.parse(localStorage.getItem("productStore")).products[i].totalSum == undefined ? 0 : JSON.parse(localStorage.getItem("productStore")).products[i].totalSum
-          this.products[i].discountSum = JSON.parse(localStorage.getItem("productStore")).products[i].discountSum == undefined ? 0 : JSON.parse(localStorage.getItem("productStore")).products[i].discountSum
-          this.products[i].liked = JSON.parse(localStorage.getItem("productStore")).products[i].liked;
+          this.products[i].amount = productStore?.[i]?.amount || 0;
+          this.products[i].totalSum = productStore?.[i]?.totalSum || 0;
+          this.products[i].discountSum = productStore?.[i]?.discountSum || 0;
+          this.products[i].liked = productStore?.[i]?.liked || false;
         }
+        localStorage.setItem("productStore", JSON.stringify(useProductStore));
+
       } catch (error) {
-        console.error(error);
+        console.log(error);
+      }
+    },
+    async getCountries() {
+      try {
+        let response = await axios.get('https://restcountries.com/v3.1/all');
+        this.countries = response.data;
+      }
+      catch (error) {
+        console.log(error);
+      }
+    },
+    async getPhoneCodes() {
+      try {
+        let response = await axios.get('https://restcountries.com/v3.1/all');
+        this.countries = response.data;
+        this.countries.sort(function (a, b) {
+          if (a.name['common'] < b.name['common']) {
+            return -1;
+          }
+          if (a.name['common'] > b.name['common']) {
+            return 1;
+          }
+          return 0;
+        }
+        )
+
+        let arr = [];
+        for (let i = 0; i < this.countries.length; i++) {
+          for (let x = 0; x < this.countries[i].idd.suffixes?.length; x++) {
+            let phoneCode = '';
+            phoneCode += this.countries[i].idd.root + this.countries[i].idd.suffixes[x];
+            arr.push(phoneCode)
+          }
+        }
+        this.phoneCodes = arr;
+        return this.phoneCodes;
+      }
+      catch (error) {
+        console.log(error);
       }
     },
   },

@@ -65,6 +65,10 @@
         width: 100%;
         transition: width 0.1s;
       }
+      li.active::after {
+        width: 100%;
+        transition: width 0.1s;
+      }
     }
 
     &-products {
@@ -112,18 +116,6 @@
             padding: 0 40px;
           }
 
-          // @include media(768px) {
-          //   padding: 10px 70px;
-          // }
-
-          // @include media(576px) {
-          //   padding: 20px 70px;
-          // }
-
-          // @include media(480px) {
-          //   padding: 0px 70px;
-          // }
-
           a {
             width: 100%;
             position: absolute;
@@ -145,14 +137,13 @@
 
           .icons {
             position: absolute;
-            // overflow: hidden;
-            top: -100px;
+            top: -10px;
             left: 30px;
             display: flex;
             flex-direction: column;
             gap: 40px;
             visibility: hidden;
-            transition: top 0.5s;
+            transition: top 1s;
 
             @include media(1400px) {
               left: 20px;
@@ -180,10 +171,11 @@
         &-img:hover {
           background: rgba(18, 18, 17, 0.05);
           backdrop-filter: blur(1px);
-
+          transition: background 0.5s;
           .icons {
             top: 40px;
             visibility: visible;
+            // transition: visibility 1s;
           }
         }
 

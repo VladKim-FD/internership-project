@@ -12,11 +12,6 @@ const discountSum = computed(() => Math.ceil(productStore.getDiscountSum));
 const totalSum = computed(() => Math.round(productStore.getTotalSum));
 const id = computed(() => productStore.id);
 
-// console.log(id);
-
-// console.log(subTotalSum);
-// console.log(discountSum);
-
 function increase(product) {
   product.amount++;
   product.totalSum = product.price * product.amount;

@@ -7,6 +7,7 @@
   @include media(1400px) {
     padding-top: 30px;
   }
+
   @include media(768px) {
     padding-top: 0;
   }
@@ -35,7 +36,9 @@
       h1 {
         max-width: 670px;
         text-transform: uppercase;
-        // margin-bottom: 60px;
+        background-clip: text;
+        -webkit-background-clip: text;
+        // -webkit-text-fill-color: transparent;
         @include font(100px, 150px, $headlineColor, 800, "Kanit");
 
         @include media(1400px) {
@@ -47,6 +50,7 @@
           font-size: 80px;
           line-height: 100px;
         }
+
         @include media(768px) {
           font-size: 50px;
           line-height: 80px;
@@ -73,9 +77,9 @@
       @include media(992px) {
         max-width: 100%;
       }
-      
-      .swiper{
-        @include media(1200px){
+
+      .swiper {
+        @include media(1200px) {
           max-width: 500px;
         }
       }
@@ -93,9 +97,9 @@
           max-width: 100%;
         }
       }
-      
-      span{
-        margin: 0 ;
+
+      span {
+        margin: 0;
       }
     }
   }

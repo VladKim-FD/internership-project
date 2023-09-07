@@ -5,7 +5,10 @@
     margin: 110px 0;
     display: flex;
     gap: 5px;
-    @include font(18px, 18px, $blue, 400, 'Questrial');
+
+    a {
+        @include font(18px, 22px, $blue, 400, 'Questrial');
+    }
 
     @include media(1200px) {
         margin: 50px 0;
@@ -185,7 +188,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    @include media(768px){
+
+    @include media(768px) {
         padding: 30px;
     }
 
@@ -197,8 +201,9 @@
             background: $blue;
             display: flex;
             justify-content: center;
-            img{
-                @include media(768px){
+
+            img {
+                @include media(768px) {
                     width: 100px;
                 }
             }

@@ -123,7 +123,7 @@ function likeProduct(event, product) {
             <RouterLink :to="`/shoppingCart`">
               <btn text="Buy NOW"></btn>
             </RouterLink>
-            <div class="icon-like" @click="likeProduct($event, product)" :class="{active: product.liked == true}"></div>
+            <div class="icon-like" @click="likeProduct($event, product)"></div>
           </div>
         </div>
       </div>

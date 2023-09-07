@@ -15,9 +15,14 @@ export const useProductStore = defineStore("productStore", {
       countries: [],
       phoneCodes: [],
       id: Number,
+      img: String
     };
   },
   getters: {
+    getImage(){
+       let img = !JSON.parse(localStorage.getItem("productStore"))?.img ? JSON.parse(localStorage.getItem("productStore"))?.products : '';
+       return img; 
+    },
     getCategories() {
       for (let m = 0; m < this.products.length; m++) {
         this.categories.push(this.products[m].category);
@@ -34,7 +39,7 @@ export const useProductStore = defineStore("productStore", {
       );
       let extraProducts = this.products.filter(
         (product) =>
-          product.category == currentProduct.category &&
+          product.category == currentProduct?.category &&
           product.id != currentProduct.id
       );
       return extraProducts;

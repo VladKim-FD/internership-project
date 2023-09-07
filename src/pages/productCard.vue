@@ -1,7 +1,7 @@
 <template>
     <div>
         <navbar></navbar>
-        <productCardInfo></productCardInfo>
+        <productCard></productCard>
         <footerVue></footerVue>
     </div>
 </template>
@@ -9,12 +9,12 @@
 <script>
 import navbar from '../components/navbar.vue';
 import footerVue from '../components/footer.vue';
-import productCardInfo from '../components/productCardInfo.vue';
+import productCard from '../components/productCard.vue';
 export default {
     components: {
         navbar,
         footerVue,
-        productCardInfo
+        productCard
     }
 }
 </script>

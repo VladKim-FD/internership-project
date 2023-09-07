@@ -44,7 +44,7 @@
         display: flex;
         align-items: center;
         width: 100%;
-        justify-content: space-around;
+        justify-content: space-evenly;
         z-index: 2;
 
         @include media(992px) {
@@ -109,6 +109,7 @@
             a {
                 padding: 13px 6px;
                 @include font(18px, 19px, $black, 400, 'Questrial');
+                position: relative;
 
                 @include media(992px) {
                     font-size: 16px;
@@ -118,13 +119,14 @@
                     color: $white;
                     font-size: 18px;
                 }
-            }
-
-            ;
+            };
 
             a::after {
                 content: '';
                 display: block;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
                 width: 0;
                 height: 2px;
                 background: $blue;
@@ -133,6 +135,7 @@
 
             a:hover::after {
                 width: 100%;
+                transition: width 0.1s;
             }
         }
 
@@ -208,6 +211,7 @@
         padding: 5px;
         position: relative;
         background: $blue;
+        border: none;
         outline: none;
         z-index: 20;
         cursor: pointer;

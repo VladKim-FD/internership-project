@@ -3,15 +3,17 @@
 
 .shopping__cart {
 
-  &-links{
+  &-links {
     display: flex;
     margin-bottom: 110px;
     gap: 5px;
     @include font(18px, 18px, $blue, 400, 'Questrial');
-    .first-link{
+
+    .first-link {
       color: $black;
     }
   }
+
   &-info {
     display: flex;
     justify-content: space-between;
@@ -45,7 +47,7 @@
           padding-left: 30px;
         }
 
-        @include media(480px){
+        @include media(480px) {
           padding: 10px;
           gap: 20px;
         }
@@ -57,7 +59,7 @@
 
         .titles {
           display: flex;
-          gap: 70px;
+          gap: 50px;
           margin-right: 130px;
 
           @include media(1400px) {
@@ -102,14 +104,18 @@
             flex-wrap: wrap;
           }
 
-          @include media(480px){
+          @include media(480px) {
             padding: 10px;
           }
 
           &__info {
+            display: flex;
+            gap: 20px;
+
             img {
               max-width: 150px;
               max-height: 150px;
+              object-fit: contain;
             }
 
             &-description {
@@ -158,7 +164,8 @@
                 display: flex;
                 align-items: center;
                 @include font(20px, 10px, $black, 400, 'Questrial');
-                @include media(480px){
+
+                @include media(480px) {
                   padding: 10px;
                 }
               }
@@ -195,7 +202,7 @@
           text-transform: uppercase;
           @include font(25px, 25px, $black, 400, "Questrial");
 
-          
+
         }
       }
 
@@ -266,9 +273,6 @@
       margin-bottom: 70px;
       text-transform: uppercase;
       @include font(25px, 25px, $black, 400, "Questrial");
-      @include media(768px){
-        margin-bottom: 50px;
-      }
     }
 
     &-content {
@@ -282,9 +286,9 @@
       }
 
       .extra__item {
-        width: 22%;
+        width: 23%;
 
-        @include media(1200px) {
+        @include media(1400px) {
           width: 31%;
         }
 
@@ -292,14 +296,23 @@
           width: 47%;
         }
 
-        @include media(576px) {
+        @include media(768px) {
           width: 100%;
         }
 
         &-img {
           width: 100%;
-          height: 200px;
+          height: 300px;
           position: relative;
+          padding: 50px 60px;
+
+          @include media(1400px) {
+            padding: 50px;
+          }
+
+          @include media(768px) {
+            padding: 30px 65px;
+          }
 
           a {
             position: absolute;
@@ -313,6 +326,53 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
+          }
+
+          .icons {
+            position: absolute;
+            top: -10px;
+            left: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            visibility: hidden;
+            transition: top 1s;
+
+            @include media(1400px) {
+              left: 15px;
+            }
+
+            @include media(992px) {
+              left: 15px;
+            }
+
+            @include media(768px) {
+              left: 20px;
+            }
+
+            img {
+              width: 25px;
+              height: 25px;
+            }
+
+            img:hover {
+              cursor: pointer;
+            }
+
+            div:hover {
+              cursor: pointer;
+            }
+          }
+        }
+
+        &-img:hover {
+          background: rgba(18, 18, 17, 0.05);
+          backdrop-filter: blur(1px);
+          transition: background 0.5s;
+
+          .icons {
+            top: 40px;
+            visibility: visible;
           }
         }
 
@@ -333,7 +393,7 @@
     }
   }
 
-  h5{
+  h5 {
     display: block;
     max-width: max-content;
     margin: 0 auto 50px;

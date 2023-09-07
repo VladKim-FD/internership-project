@@ -1,5 +1,4 @@
 <script setup>
-import btn from "../components/btn.vue";
 import { ref, computed } from "vue";
 import { RouterLink } from "vue-router";
 import { useProductStore } from "../stores/store.js";
@@ -49,7 +48,6 @@ function menuToggle() {
         <div class="nav__content-links-right">
           <div class="cart-logo">
             <router-link :to="`/shoppingCart`"></router-link>
-            <!-- <img src="../assets/icons/cart-icon.svg" alt="" /> -->
             <div class="icon-cart cart"></div>
             <div class="totalQuantity">
               <p>{{ totalQuantity != NaN ? totalQuantity : 0 }}</p>

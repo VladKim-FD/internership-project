@@ -11,10 +11,11 @@ const subTotalSum = computed(() => productStore.getSubTotalSum);
 const discountSum = computed(() => Math.ceil(productStore.getDiscountSum));
 const totalSum = computed(() => Math.round(productStore.getTotalSum));
 const id = computed(() => productStore.id);
-console.log(id);
 
-console.log(subTotalSum);
-console.log(discountSum);
+// console.log(id);
+
+// console.log(subTotalSum);
+// console.log(discountSum);
 
 function increase(product) {
   product.amount++;
@@ -53,6 +54,38 @@ function openProduct(id) {
   productStore.id = id;
 }
 
+// likeProduct
+
+function likeProduct(event, product) {
+  if (event.target.classList.contains('active')) {
+    event.target.classList.remove('active')
+  } else {
+    event.target.classList.add('active')
+  }
+
+  product.liked = !product.liked
+}
+
+// add or delete product
+
+function addOrDeleteProduct(product) {
+  if (product.amount != 0) {
+    product.amount = 0
+    product.totalSum = product.price * product.amount;
+    product.discountSum = product.discountPercentage / 100 * product.totalSum
+
+    localStorage.setItem("productStore", JSON.stringify(productStore));
+  } else {
+    product.amount++
+    product.totalSum = product.price * product.amount;
+    product.discountSum = product.discountPercentage / 100 * product.totalSum
+
+    productStore.id = product.id;
+
+    localStorage.setItem("productStore", JSON.stringify(productStore));
+  }
+}
+
 </script>
 
 <template>
@@ -83,20 +116,20 @@ function openProduct(id) {
                 </div>
               </div>
 
-           <div class="product__order">
-            <p class="product__order-price">$ {{ product.price }}</p>
-              <div class="product__order-btns">
-                <orderBtn text="-" @click="decrease(product)"></orderBtn>
-                <div class="ordered-quantity">
-                  {{ product.amount > 0 ? product.amount : 0 }}
+              <div class="product__order">
+                <p class="product__order-price">$ {{ product.price }}</p>
+                <div class="product__order-btns">
+                  <orderBtn text="-" @click="decrease(product)"></orderBtn>
+                  <div class="ordered-quantity">
+                    {{ product.amount > 0 ? product.amount : 0 }}
+                  </div>
+                  <orderBtn text="+" @click="increase(product)"></orderBtn>
                 </div>
-                <orderBtn text="+" @click="increase(product)"></orderBtn>
+                <div class="sum">$ {{ product.totalSum }}</div>
+                <div class="delete" @click="deleteProduct(product)">
+                  <img src="../assets/icons/delete.svg" alt="">
+                </div>
               </div>
-              <div class="sum">$ {{ product.totalSum }}</div>
-              <div class="delete" @click="deleteProduct(product)">
-                <img src="../assets/icons/delete.svg" alt="">
-              </div>
-           </div>
             </div>
           </div>
         </div>
@@ -119,7 +152,7 @@ function openProduct(id) {
             </div>
           </div>
           <div class="btns-right">
-           <router-link :to="`/productCheckout`" class="first-link">Proceed To Checkout</router-link>
+            <router-link :to="`/productCheckout`" class="first-link">Proceed To Checkout</router-link>
             <router-link :to="`/`">Continue Shopping</router-link>
           </div>
         </div>
@@ -131,9 +164,15 @@ function openProduct(id) {
             <div class="extra__item-img">
               <RouterLink :to="`/productCard/${extraProduct.id}`" @click="openProduct(extraProduct.id)"></RouterLink>
               <img :src="extraProduct.thumbnail" alt="" />
+              <div class="icons">
+                <div class="icon-cart" @click="addOrDeleteProduct(extraProduct)"></div>
+                <div class="icon-like" @click="likeProduct($event, extraProduct)"
+                  :class="{ active: extraProduct.liked == true }"></div>
+              </div>
+
             </div>
             <div class="extra__item-description">
-              <h4>{{ extraProduct.description }}</h4>
+              <h4>{{ extraProduct.title }}</h4>
               <p>$ {{ extraProduct.price }}</p>
             </div>
           </div>

@@ -8,8 +8,6 @@ onMounted(async () => {
   await productStore.getProducts();
 });
 
-console.log(productStore);
-
 let products = computed(() => productStore.products);
 let categoriesArr = computed(() => productStore.getCategories);
 let productsArr = ref([]);
@@ -71,13 +69,15 @@ let changeProducts = (event, elem) => {
 
 function resetFilter() {
   filter.value = false;
-  console.log(filter);
+  
 }
 
 // going to another page
 
 function openProduct(id) {
+  console.log(id);
   productStore.id = id;
+  localStorage.setItem("productStore", JSON.stringify(productStore));
 }
 
 // like product
@@ -89,6 +89,26 @@ function likeProduct(event, product) {
     event.target.classList.add('active')
   }
   product.liked = !product.liked
+}
+
+// add or delete product
+
+function addOrDeleteProduct(product) {
+  if (product.amount != 0) {
+    product.amount = 0
+    product.totalSum = product.price * product.amount;
+    product.discountSum = product.discountPercentage / 100 * product.totalSum
+
+    localStorage.setItem("productStore", JSON.stringify(productStore));
+  } else {
+    product.amount++
+    product.totalSum = product.price * product.amount;
+    product.discountSum = product.discountPercentage / 100 * product.totalSum
+
+    productStore.id = product.id;
+
+    localStorage.setItem("productStore", JSON.stringify(productStore));
+  }
 }
 
 </script>
@@ -107,8 +127,9 @@ function likeProduct(event, product) {
           <div class="product-img">
             <RouterLink :to="`/productCard/${product.id}`" @click="openProduct(product.id)"></RouterLink>
             <div class="icons">
-              <img src="../assets/icons/cart.svg" alt="" />
-              <div class="icon-like" @click="likeProduct($event, product)" :class="{active: product.liked == true}"></div>
+              <div class="icon-cart" @click="addOrDeleteProduct(product)"></div>
+              <div class="icon-like" @click="likeProduct($event, product)" :class="{ active: product.liked == true }">
+              </div>
             </div>
             <div class="product-img-block">
               <img :src="product.thumbnail" alt="" />
@@ -121,7 +142,9 @@ function likeProduct(event, product) {
           <div class="product-img">
             <RouterLink :to="`/productCard/${otherProduct.id}`" @click="openProduct(otherProduct.id)"></RouterLink>
             <div class="icons">
-              <img src="../assets/icons/cart.svg" alt="" />
+              <!-- <img src="../assets/icons/cart.svg" alt="" /> -->
+              <div class="icon-cart" @click="addOrDeleteProduct(extraProduct)">
+              </div>
               <div class="icon-like" @click="likeProduct($event, otherProduct)"></div>
             </div>
             <div class="product-img-block">

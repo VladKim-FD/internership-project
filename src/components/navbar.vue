@@ -24,10 +24,8 @@ function menuToggle() {
 <template>
   <nav>
     <div class="container nav__content">
-      <div class="nav__content-logo">
-        <router-link :to="`/`"></router-link>
-        <img src="/src/assets/icons/nav-logo.svg" alt="" />
-      </div>
+        <router-link :to="`/`" class="nav__content-logo">
+          <img src="/src/assets/icons/nav-logo.svg" alt="" /></router-link>
       <div class="nav__content-links" ref="navbarMenu" :class="{ active: isActive }">
         <ul class="nav__content-links-list">
           <li>

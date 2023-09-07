@@ -27,12 +27,17 @@
     &-types {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-      justify-content: space-between;
+      // display: flex;
+      flex-wrap: wrap;
+      // width: max-content;
+      justify-content: space-evenly;
       margin-bottom: 70px;
-      gap: 30px;
+      gap: 60px;
+      // text-align: center;
 
       @include media(1200px) {
         margin-bottom: 40px;
+        grid-template-columns: repeat(4, 1fr);
       }
 
       @include media(768px) {
@@ -42,13 +47,27 @@
 
       @include media(480px) {
         grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
       }
 
       li {
-        width: 1fr;
+        // width: 15%;
+        width: max-content;
+        // width: 1fr;
+        // display: inline;
+        text-align: center;
         // padding: 8px 4px;
         @include font(20px, 20px, $black, 400, "Questrial");
         position: relative;
+        
+        
+        @include media(1200px){
+          width: 1fr !important;
+        }
+        
+        @include media(480px){
+          font-size: 16px;
+        }
       }
 
       li::after {
@@ -66,11 +85,13 @@
       li:hover::after {
         width: 100%;
         transition: width 0.1s;
+        cursor: pointer;
       }
 
       li.active::after {
         width: 100%;
         transition: width 0.1s;
+        cursor: pointer;
       }
     }
 
@@ -141,7 +162,7 @@
 
           .icons {
             position: absolute;
-            top: -10px;
+            top: 0px;
             left: 30px;
             display: flex;
             flex-direction: column;
@@ -174,7 +195,7 @@
               cursor: pointer;
             }
           }
-          
+
           h5 {
             position: absolute;
             top: 0;
@@ -207,7 +228,7 @@
           @include font(20px, 30px, $blue, 400, "Kanit");
         }
 
-       
+
       }
     }
 

@@ -82,6 +82,8 @@ function addOrDeleteProduct(product) {
     product.discountSum = product.discountPercentage / 100 * product.totalSum
 
     localStorage.setItem("productStore", JSON.stringify(productStore));
+    
+    // event.target.classList.remove('active')
   } else {
     product.amount++
     product.totalSum = product.price * product.amount;
@@ -90,6 +92,8 @@ function addOrDeleteProduct(product) {
     productStore.id = product.id;
 
     localStorage.setItem("productStore", JSON.stringify(productStore));
+    
+    // event.target.classList.add('active')
   }
 }
 </script>
@@ -137,7 +141,7 @@ function addOrDeleteProduct(product) {
               <RouterLink :to="`/productCard/${extraProduct.id}`" @click="openProduct(extraProduct.id), changeImg(extraProduct.thumbnail)"></RouterLink>
               <img :src="extraProduct.thumbnail" alt="" />
               <div class="icons">
-                <div class="icon-cart" @click="addOrDeleteProduct(extraProduct)"></div>
+                <div class="icon-cart" @click="addOrDeleteProduct(extraProduct)" :class="{active: extraProduct.amount}"></div>
                 <div class="icon-like" @click="likeProduct($event, extraProduct)"
                   :class="{ active: extraProduct.liked == true }"></div>
               </div>

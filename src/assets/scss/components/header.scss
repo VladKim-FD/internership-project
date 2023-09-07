@@ -34,12 +34,17 @@
       }
 
       h1 {
-        max-width: 670px;
+        font-family: 'Kanit';
+        font-size: 100px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
         text-transform: uppercase;
+        max-width: 670px;
+        background: linear-gradient(90deg, $black 23.37%, #3d3d3d 55.51%);
         background-clip: text;
         -webkit-background-clip: text;
-        // -webkit-text-fill-color: transparent;
-        @include font(100px, 150px, $headlineColor, 800, "Kanit");
+        -webkit-text-fill-color: transparent;
 
         @include media(1400px) {
           line-height: 130px;

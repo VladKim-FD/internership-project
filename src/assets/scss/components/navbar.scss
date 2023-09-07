@@ -206,11 +206,11 @@
     }
 
     .menu-btn {
-        width: 55px;
-        height: 55px;
-        padding: 5px;
+        width: 40px;
+        height: 40px;
+        // padding: 5px;
         position: relative;
-        background: $blue;
+        background: transparent;
         border: none;
         outline: none;
         z-index: 20;
@@ -224,7 +224,7 @@
         span {
             width: 40px;
             height: 4px;
-            background: white;
+            background: $blue;
             transition: width 0.3s;
         }
 
@@ -254,7 +254,7 @@
         &::after {
             width: 40px;
             height: 4px;
-            background: white;
+            background: $blue;
             position: absolute;
             content: '';
             transition: transform 0.3s, top 0.3s, bottom 0.3s;

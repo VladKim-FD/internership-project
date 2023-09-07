@@ -55,6 +55,10 @@ $red: var(--red);
         font-family: 'icons';
         color: $blue;
     }
+    
+    &-cart.active::before {
+        color: $red;
+    }
 
     &-close::before {
         content: '\f00d';

@@ -2,10 +2,15 @@
 @import "../common/common";
 
 .form__block {
-    // width: 50%;
+    max-width: 810px;
+    width: 100%;
+    
+    @include media(1450px){
+        max-width: 750px;
+    }
 
-    @include media(1200px) {
-        width: unset;
+    @include media(1400px) {
+        max-width: unset;
     }
 
     h2 {
@@ -25,8 +30,22 @@
         }
 
         input,
-        textarea, select {
+        textarea {
+            border: 1px solid $btnBorder;
             @include font(18px, 15px, $black, 400, 'Questrial')
+        }
+        
+        select{
+            border: 1px solid $btnBorder;
+            @include font(18px, 15px, $greyText, 400, 'Questrial')
+        }
+        
+        input{
+            max-width: 390px;
+            width: 100%;
+            @include media(1200px){
+                max-width: unset;
+            }
         }
 
         textarea{
@@ -93,9 +112,9 @@
                     max-width: 228px;
                 }
 
-                @include media(1200px) {
-                    max-width: unset;
-                }
+                // @include media(1200px) {
+                //     max-width: unset;
+                // }
 
                 @include media(768px) {
                     max-width: 240px;

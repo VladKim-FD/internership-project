@@ -169,7 +169,7 @@ function addOrDeleteProduct(product) {
                 <div class="icon-like" @click="likeProduct($event, extraProduct)"
                   :class="{ active: extraProduct.liked == true }"></div>
               </div>
-
+              <h5>{{ Math.ceil(extraProduct.discountPercentage) }} % OFF</h5>
             </div>
             <div class="extra__item-description">
               <h4>{{ extraProduct.title }}</h4>

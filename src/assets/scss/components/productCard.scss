@@ -302,6 +302,15 @@
               cursor: pointer;
             }
           }
+          
+          h5{
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px 25px;
+            background: $blue;
+            @include font(16px, 16px, $white, 400, 'Kanit')
+          }
         }
 
         &-img:hover {

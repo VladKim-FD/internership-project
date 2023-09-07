@@ -69,7 +69,7 @@ let changeProducts = (event, elem) => {
 
 function resetFilter() {
   filter.value = false;
-  
+
 }
 
 // going to another page
@@ -134,9 +134,11 @@ function addOrDeleteProduct(product) {
             <div class="product-img-block">
               <img :src="product.thumbnail" alt="" />
             </div>
+            <h5>{{ Math.ceil(product.discountPercentage) }} % OFF</h5>
           </div>
           <p>{{ product.title }}</p>
           <span>$ {{ product.price }}</span>
+        
         </div>
         <div class="product" v-for="otherProduct in arrGoods" v-show="filter">
           <div class="product-img">

@@ -51,15 +51,17 @@ let categories = ref('categories');
 let changeProducts = (event, elem) => {
   filter.value = true;
 
-  if (event.target.classList.contains('active')) {
-    event.target.classList.remove('active')
-  } else {
+  // if (event.target.classList.contains('active')) {
+  //   event.target.classList.remove('active')
+  // } 
+  // if(){
     event.target.classList.add('active')
-  }
+  // }
   for (let i = 0; i < categories.value.length; i++) {
-    if (categories.value[i] != event.target && categories.value[i].classList.contains('active')) {
+    if (categories.value[i] != event.target ) {
       categories.value[i].classList.remove('active')
     }
+    
   }
 
   arrGoods.value = products.value.filter((product) => product.category == elem);

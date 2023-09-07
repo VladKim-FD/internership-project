@@ -33,7 +33,9 @@ function menuToggle() {
           </li>
           <li>
             <!-- <a href="#!">Product card</a> -->
-            <router-link :to="`/productCard/${id}`">Product Card</router-link>
+            <!-- <router-link :to="`/productCard/${id}`">Product Card</router-link> -->
+            <!-- <router-link></router-link> -->
+            <a href="#footer">Contacts</a>
           </li>
           <li>
             <!-- <a href="#!"></a> -->

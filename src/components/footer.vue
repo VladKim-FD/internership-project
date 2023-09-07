@@ -7,7 +7,7 @@ const id = productStore.id;
 
 <template>
   <div>
-    <footer class="footer">
+    <footer class="footer" id="footer">
       <div class="container footer__content">
         <div class="footer__content-logo">
           <img src="../assets/icons/footer-logo.svg" alt="" />

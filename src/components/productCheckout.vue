@@ -1,7 +1,6 @@
 <script setup>
 import { computed, ref, onMounted } from "vue";
 import { useProductStore } from "../stores/store.js";
-// import modal from "./modal.vue";
 import formVue from "./form.vue";
 
 
@@ -39,7 +38,6 @@ let body = app.parentElement;
 
 function openModal() {
     modalOpen.value = true;
-    console.log(modalOpen);
     if(body.classList.contains('active')){
     body.classList.remove('active')
   }else{
@@ -49,7 +47,6 @@ function openModal() {
 
 function closeModal() {
     modalOpen.value = false;
-    console.log(modalOpen);
     if(body.classList.contains('active')){
     body.classList.remove('active')
   }else{
@@ -65,70 +62,8 @@ function closeModal() {
             <RouterLink :to="`/productCheckout`">Payment and Delivery</RouterLink>
         </div>
     </div>
-    <div class="container checkout__content">
+    <section class="container checkout__content">
         <formVue></formVue>
-        <!-- <div class="checkout__content-left">
-            <h2>Billing Address</h2>
-            <form action="">
-                <div class="name-inputs">
-                    <label for="">
-                        First Name *
-                        <input type="text">
-                    </label>
-                    <label for="">
-                        Last Name *
-                        <input type="text">
-                    </label>
-                </div>
-                <div class="location-inputs">
-                    <label for="" class="country-select">
-                        Country / Region *
-                        <select name="" id="">
-                            <option selected class="first-option">Select a country / region</option>
-                            <option v-for="country in countries">{{ country.name['common'] }}</option>
-                        </select>
-                    </label>
-                    <label for="">
-                        Town / City *
-                        <input type="text">
-                    </label>
-                </div>
-                <div class="address-inputs">
-                    <label for="">
-                        Street Address *
-                        <input type="text" placeholder="House number and street name">
-                    </label>
-                    <label for="" class="extra-address">
-                        <input type="text" placeholder="Appartment, suite, unit, etc. (optional)">
-                    </label>
-                </div>
-                <div class="contact-inputs">
-                    <label for="">
-                        Email address *
-                        <input type="email" name="" id="">
-                    </label>
-                    <div class="phone-inputs">
-                        <p>Phone Number *</p>
-                        <div class="phone-code">
-                            <select name="" id="">
-                                <option value="" v-for="phoneCode in phoneCodes">{{ phoneCode !== undefined ? phoneCode :
-                                    null }}
-                                </option>
-                            </select>
-                            <input type="text" class="phone-input">
-                        </div>
-                    </div>
-                </div>
-                <div class="different-address">
-                    <input type="checkbox" id="checkbox">
-                    <label for="checkbox"> Ship to a different address?</label>
-                </div>
-                <label for="" class="other-notes">
-                    Order notes (optional) *
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
-                </label>
-            </form>
-        </div> -->
         <div class="checkout__content-right">
             <h2>Your Order</h2>
             <div class="right-titles">
@@ -164,8 +99,7 @@ function closeModal() {
             </div>
             <button @click="openModal"> Place Order</button>
         </div>
-    </div>
-    <!-- <modal v-show="modalOpen"></modal> -->
+    </section>
     <div class="modal" v-show="modalOpen == true">
         <div class="modal__block">
             <div class="modal__block-top">

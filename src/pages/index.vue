@@ -1,5 +1,4 @@
 <template>
-   
     <footerVue></footerVue>
 </template>
 

@@ -4,8 +4,8 @@
 .form__block {
     max-width: 810px;
     width: 100%;
-    
-    @include media(1450px){
+
+    @include media(1450px) {
         max-width: 750px;
     }
 
@@ -34,21 +34,22 @@
             border: 1px solid $btnBorder;
             @include font(18px, 15px, $black, 400, 'Questrial')
         }
-        
-        select{
+
+        select {
             border: 1px solid $btnBorder;
             @include font(18px, 15px, $greyText, 400, 'Questrial')
         }
-        
-        input{
+
+        input {
             max-width: 390px;
             width: 100%;
-            @include media(1200px){
+
+            @include media(1200px) {
                 max-width: unset;
             }
         }
 
-        textarea{
+        textarea {
             padding: 20px;
         }
 
@@ -71,6 +72,15 @@
                 @include media(1200px) {
                     max-width: unset;
                     width: 100%;
+                }
+
+                .text {
+                    display: flex;
+                    gap: 3px;
+                }
+
+                span {
+                    color: $blue;
                 }
 
                 input,
@@ -100,7 +110,6 @@
             }
 
             .extra-address {
-                // align-self: center;
                 padding-top: 35px;
                 gap: unset;
             }
@@ -112,10 +121,6 @@
                     max-width: 228px;
                 }
 
-                // @include media(1200px) {
-                //     max-width: unset;
-                // }
-
                 @include media(768px) {
                     max-width: 240px;
                 }
@@ -124,11 +129,6 @@
                     max-width: 200px;
                 }
             }
-
-            // input {
-            //     max-width: 390px;
-            //     width: 100%;
-            // }
         }
 
         .contact-inputs {
@@ -162,10 +162,6 @@
                             padding: 13px 10px;
                             max-width: 73px;
                         }
-
-                        // @include media(768px) {
-                        //     max-width: 50px;
-                        // }
 
                         option {
                             @include font(18px, 15px, $black, 400, 'Questrial')

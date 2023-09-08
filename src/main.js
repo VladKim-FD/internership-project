@@ -10,8 +10,6 @@ app.use(pinia);
 app.use(routers);
 app.mount("#app");
 
-// console.log(pinia.state.value.productStore.products);
-
 watch(
   pinia.state,
   (state) => {

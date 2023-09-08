@@ -51,17 +51,11 @@ let categories = ref('categories');
 let changeProducts = (event, elem) => {
   filter.value = true;
 
-  // if (event.target.classList.contains('active')) {
-  //   event.target.classList.remove('active')
-  // } 
-  // if(){
-    event.target.classList.add('active')
-  // }
+  event.target.classList.add('active')
   for (let i = 0; i < categories.value.length; i++) {
-    if (categories.value[i] != event.target ) {
+    if (categories.value[i] != event.target) {
       categories.value[i].classList.remove('active')
     }
-    
   }
 
   arrGoods.value = products.value.filter((product) => product.category == elem);
@@ -72,7 +66,7 @@ let changeProducts = (event, elem) => {
 function resetFilter() {
   filter.value = false;
   for (let i = 0; i < categories.value.length; i++) {
-    if (categories.value[i] != event.target && categories.value[i].classList.contains('active')) {
+    if ( categories.value[i].classList.contains('active')) {
       categories.value[i].classList.remove('active')
     }
   }
@@ -81,7 +75,6 @@ function resetFilter() {
 // going to another page
 
 function openProduct(id) {
-  console.log(id);
   productStore.id = id;
   localStorage.setItem("productStore", JSON.stringify(productStore));
 }
@@ -106,7 +99,6 @@ function addOrDeleteProduct(product) {
     product.discountSum = product.discountPercentage / 100 * product.totalSum
 
     localStorage.setItem("productStore", JSON.stringify(productStore));
-    // event.target.classList.remove('active')
   } else {
     product.amount++
     product.totalSum = product.price * product.amount;
@@ -115,8 +107,7 @@ function addOrDeleteProduct(product) {
     productStore.id = product.id;
 
     localStorage.setItem("productStore", JSON.stringify(productStore));
-    
-    // event.target.classList.add('active')
+
   }
 }
 
@@ -132,11 +123,12 @@ function addOrDeleteProduct(product) {
         </li>
       </ul>
       <div class="categories__content-products">
+
         <div class="product" v-for="product in productsArr" v-show="!filter">
           <div class="product-img">
             <RouterLink :to="`/productCard/${product.id}`" @click="openProduct(product.id)"></RouterLink>
             <div class="icons">
-              <div class="icon-cart" @click="addOrDeleteProduct(product)" :class="{active: product.amount}"></div>
+              <div class="icon-cart" @click="addOrDeleteProduct(product)" :class="{ active: product.amount }"></div>
               <div class="icon-like" @click="likeProduct($event, product)" :class="{ active: product.liked == true }">
               </div>
             </div>
@@ -147,27 +139,28 @@ function addOrDeleteProduct(product) {
           </div>
           <p>{{ product.title }}</p>
           <span>$ {{ product.price }}</span>
-        
         </div>
+
         <div class="product" v-for="otherProduct in arrGoods" v-show="filter">
           <div class="product-img">
             <RouterLink :to="`/productCard/${otherProduct.id}`" @click="openProduct(otherProduct.id)"></RouterLink>
             <div class="icons">
-              <!-- <img src="../assets/icons/cart.svg" alt="" /> -->
-              <div class="icon-cart" @click="addOrDeleteProduct(extraProduct)" :class="{active: otherProduct.amount}">
+              <div class="icon-cart" @click="addOrDeleteProduct(otherProduct)" :class="{ active: otherProduct.amount }">
               </div>
               <div class="icon-like" @click="likeProduct($event, otherProduct)"></div>
             </div>
             <div class="product-img-block">
               <img :src="otherProduct.thumbnail" alt="" />
             </div>
+            <h5>{{ Math.ceil(otherProduct.discountPercentage) }} % OFF</h5>
           </div>
           <p>{{ otherProduct.title }}</p>
           <span>$ {{ otherProduct.price }}</span>
         </div>
       </div>
       <div class="categories__content-buttons">
-        <button v-for="btn in pagesQuantity" @click="clickBtn(), (currentPage = btn)" ref="btns" v-show="!filter" :class="{active: btn == currentPage}">
+        <button v-for="btn in pagesQuantity" @click="clickBtn(), (currentPage = btn)" ref="btns" v-show="!filter"
+          :class="{ active: btn == currentPage }">
           {{ btn }}
         </button>
         <button @click="resetFilter" v-show="filter">Reset filter</button>

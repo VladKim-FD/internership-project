@@ -8,7 +8,6 @@ const likedProducts = computed(() => productStore.getLikedProducts);
 
 function openProduct(id) {
     productStore.id = id;
-    console.log(productStore.id);
 }
 
 // like product 
@@ -20,10 +19,31 @@ function likeProduct(event, product) {
     }
     product.liked = !product.liked
 }
+
+// add or delete product
+
+function addOrDeleteProduct(product) {
+  if (product.amount != 0) {
+    product.amount = 0
+    product.totalSum = product.price * product.amount;
+    product.discountSum = product.discountPercentage / 100 * product.totalSum
+
+    localStorage.setItem("productStore", JSON.stringify(productStore));
+    
+  } else {
+    product.amount++
+    product.totalSum = product.price * product.amount;
+    product.discountSum = product.discountPercentage / 100 * product.totalSum
+
+    productStore.id = product.id;
+
+    localStorage.setItem("productStore", JSON.stringify(productStore));
+  }
+}
 </script>
 
 <template>
-    <div class="container liked__products">
+    <section class="container liked__products">
         <div class="liked__products-links">
             <RouterLink :to="`/`" class="first-link">Home</RouterLink>
             <span>/</span>
@@ -34,7 +54,7 @@ function likeProduct(event, product) {
                 <div class="item__img">
                     <RouterLink :to="`/productCard/${product.id}`" @click="openProduct(product.id)"></RouterLink>
                     <div class="icons">
-                        <img src="../assets/icons/cart.svg" alt="" />
+                        <div class="icon-cart" @click="addOrDeleteProduct(product)" :class="{active: product.amount}"></div>
                         <div class="icon-like" @click="likeProduct($event, product)" 
                         :class="{active: product.liked == true}"
                         ></div>
@@ -46,7 +66,7 @@ function likeProduct(event, product) {
             </div>
             <h2 v-show="likedProducts.length == 0">There are no liked products!</h2>
         </div>
-    </div>
+    </section>
 </template>
 
 <style lang="scss">

@@ -17,9 +17,6 @@ function increase(product) {
   product.totalSum = product.price * product.amount;
   product.discountSum = product.discountPercentage / 100 * product.totalSum;
 
-  // this.product.totalSum = this.product.getTotalSum
-  // this.product.discountSum = this.product.getDiscountSum
-
   localStorage.setItem("productStore", JSON.stringify(productStore));
 }
 
@@ -28,9 +25,6 @@ function decrease(product) {
     product.amount--;
     product.totalSum = product.price * product.amount;
     product.discountSum = product.discountPercentage / 100 * product.totalSum;
-
-    // this.product.totalSum = this.product.getTotalSum
-    // this.product.discountSum = this.product.getDiscountSum
 
     localStorage.setItem("productStore", JSON.stringify(productStore));
   }
@@ -88,7 +82,7 @@ function addOrDeleteProduct(product) {
 </script>
 
 <template>
-  <div>
+  <section>
     <div class="shopping__cart container">
       <div class="shopping__cart-links" v-show="orderedProducts.length > 0">
         <RouterLink :to="`/`" class="first-link">Home /</RouterLink>
@@ -179,7 +173,7 @@ function addOrDeleteProduct(product) {
       </div>
       <h5 v-show="orderedProducts.length == 0">There are no ordered products!</h5>
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang="scss">

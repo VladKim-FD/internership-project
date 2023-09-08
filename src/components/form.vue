@@ -71,36 +71,34 @@ const address = defineInputBinds('address', {
         <form action="">
             <div class="name-inputs">
                 <label for="" v-bind="firstName">
-                    First Name *
+                    <div class="text">First Name <span>*</span></div>
                     <input type="text" v-bind="firstName">
                     <p>{{ errors.firstName }}</p>
                 </label>
                 <label for="">
-                    Last Name *
+                    <div class="text">Last Name <span>*</span></div>
                     <input type="text" v-bind="lastName">
                     <p>{{ errors.lastName }}</p>
                 </label>
             </div>
             <div class="location-inputs">
                 <label for="" class="country-select">
-                    Country / Region *
-                    <select name="" id=""  ref='value'>
+                    <div class="text">Country / Region <span>*</span></div>
+                    <select name="" id="" ref='value'>
                         <option selected class="first-option">Select a country / region</option>
-                        <option v-for="country in countries" >{{ country.name['common'] }}</option>
+                        <option v-for="country in countries">{{ country.name['common'] }}</option>
                     </select>
                 </label>
                 <label for="">
-                    Town / City *
+                    <div class="text">Town / City <span>*</span></div>
                     <input type="text" v-bind="city">
                     <p>{{ errors.city }}</p>
                 </label>
             </div>
             <div class="address-inputs">
                 <label for="">
-                    Street Address *
-                    <input type="text" 
-                    placeholder="House number and street name" 
-                    v-bind="address">
+                    <div class="text">Street Address <span>*</span></div>
+                    <input type="text" placeholder="House number and street name" v-bind="address">
                     <p>{{ errors.address }}</p>
                 </label>
                 <label for="" class="extra-address">
@@ -109,23 +107,31 @@ const address = defineInputBinds('address', {
             </div>
             <div class="contact-inputs">
                 <label for="">
-                    Email address *
+                    <div class="text">Email address <span>*</span></div>
                     <input type="email" name="" id="" v-bind="email">
                     <p>{{ errors.email }}</p>
                 </label>
                 <div class="phone-inputs">
-                    <p>Phone Number *</p>
+                    <div class="text">
+                        <p>Phone Number <span>*</span>
+                        </p>
+                    </div>
                     <div class="phone-code">
-                        <select name="" id="">
+                        <!-- <select name="" id="">
                             <option value="" v-for="phoneCode in phoneCodes">{{ phoneCode !== undefined ? phoneCode :
                                 null }}
                             </option>
+                        </select> -->
+                        <select name="" id="">
+                            <option value="">+998</option>
+                            <option value="">+7</option>
+                            <option value="">+1</option>
                         </select>
                         <div class="phone-number">
-                            <input type="text" class="phone-input" v-bind="phoneNumber" >
+                            <input type="text" class="phone-input" v-bind="phoneNumber">
                         </div>
                     </div>
-                    <p >{{ errors.phoneNumber }}</p>
+                    <p>{{ errors.phoneNumber }}</p>
                 </div>
             </div>
             <div class="different-address">
@@ -133,7 +139,7 @@ const address = defineInputBinds('address', {
                 <label for="checkbox"> Ship to a different address?</label>
             </div>
             <label for="" class="other-notes">
-                Order notes (optional) *
+                <div class="text">Order notes (optional) <span>*</span></div>
                 <textarea name="" id="" cols="30" rows="10"></textarea>
             </label>
         </form>

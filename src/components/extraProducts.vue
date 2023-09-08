@@ -7,7 +7,7 @@ const extraProducts = computed(() => productStore.getExtraProducts);
 </script>
 
 <template>
-    <div class="products__extra">
+    <section class="products__extra">
         <h2>You may be interested in</h2>
         <div class="products__extra-content">
           <div class="extra__item" v-for="extraProduct in extraProducts" :key="extraProduct.id">
@@ -21,7 +21,7 @@ const extraProducts = computed(() => productStore.getExtraProducts);
             </div>
           </div>
         </div>
-      </div>
+    </section>
 </template>
 
 <style lang="scss">

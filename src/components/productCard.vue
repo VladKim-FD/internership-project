@@ -57,7 +57,6 @@ function decrease(product) {
 
 function openProduct(id) {
   productStore.id = id;
-  console.log(activeImg);
   localStorage.setItem("productStore", JSON.stringify(productStore));
 }
 
@@ -82,8 +81,6 @@ function addOrDeleteProduct(product) {
     product.discountSum = product.discountPercentage / 100 * product.totalSum
 
     localStorage.setItem("productStore", JSON.stringify(productStore));
-    
-    // event.target.classList.remove('active')
   } else {
     product.amount++
     product.totalSum = product.price * product.amount;
@@ -93,14 +90,13 @@ function addOrDeleteProduct(product) {
 
     localStorage.setItem("productStore", JSON.stringify(productStore));
     
-    // event.target.classList.add('active')
   }
 }
 </script>
 
 <template>
   <div>
-    <div class="container products">
+    <section class="container products">
       <div class="products__links">
         <router-link :to="`/`">Home / <span>Product Card</span></router-link>
       </div>
@@ -154,7 +150,7 @@ function addOrDeleteProduct(product) {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 

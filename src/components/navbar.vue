@@ -32,13 +32,9 @@ function menuToggle() {
             <router-link :to="`/`" >Home</router-link>
           </li>
           <li>
-            <!-- <a href="#!">Product card</a> -->
-            <!-- <router-link :to="`/productCard/${id}`">Product Card</router-link> -->
-            <!-- <router-link></router-link> -->
             <a href="#footer">Contacts</a>
           </li>
           <li>
-            <!-- <a href="#!"></a> -->
             <router-link :to="`/productCheckout`">Payment and delivery</router-link>
           </li>
           <li>
@@ -53,7 +49,6 @@ function menuToggle() {
               <p>{{ totalQuantity != NaN ? totalQuantity : 0 }}</p>
             </div>
           </div>
-          <!-- <btn text="Login"></btn> -->
         </div>
       </div>
       <button class="menu-btn" :class="{ active: isActive }" @click="menuToggle()">

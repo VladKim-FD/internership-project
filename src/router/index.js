@@ -12,7 +12,6 @@ const routers = createRouter({
     { path: "/shoppingCart", name: 'shoppingCart', component: shoppingCart},
     { path: "/likedProducts", name: 'likedProducts', component: likedProducts},
     { path: "/productCheckout", name: 'productCheckout', component: productCheckout},
-    // { path: "/productCheckout", name: 'productCheckout', component: productCheckout},
   ],
 });
 

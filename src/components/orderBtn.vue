@@ -1,6 +1,5 @@
 <template>
   <button class="orderBtn">
-    <!-- <p>{{ text }}</p> -->
     {{ text }}
   </button>
 </template>

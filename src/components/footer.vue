@@ -18,7 +18,8 @@ const id = productStore.id;
               <router-link :to="`/`">Home</router-link>
             </li>
             <li>
-              <router-link :to="`/productCard/${id}`">Product Card</router-link>
+              <!-- <router-link :to="`/productCard/${id}`">Product Card</router-link> -->
+              <router-link :to="`/shoppingCart`">Shopping Cart</router-link>
             </li>
           </ul>
           <ul class="second-list">

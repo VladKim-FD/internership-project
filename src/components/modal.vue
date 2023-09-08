@@ -7,7 +7,6 @@ const orderedProducts = computed(() => productStore.getOrderedProducts);
 const discountSum = computed(() => productStore.getDiscountSum);
 const totalSum = computed(() => productStore.getTotalSum);
 
-// productStore.modalClose()
 </script>
 
 <template>

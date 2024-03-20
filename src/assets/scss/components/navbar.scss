@@ -55,7 +55,7 @@
             justify-content: center;
             gap: 50px;
             position: fixed;
-            width: 100%;
+            width: 70%;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -65,12 +65,12 @@
             left: 0;
             padding: 20px;
             transition: 0.2s;
-            transform: translateX(100%);
+            transform: translateX(167%);
             overflow-y: auto;
             color: $white;
 
             &.active {
-                transform: translateX(0);
+                transform: translateX(43%);
             }
         }
 
@@ -104,39 +104,48 @@
                     text-align: center;
                     color: white;
                 }
-            }
 
-            a {
-                padding: 13px 6px;
-                @include font(18px, 19px, $black, 400, 'Questrial');
-                position: relative;
+                a {
+                    padding: 13px 6px;
+                    @include font(18px, 19px, $black, 400, 'Questrial');
+                    position: relative;
 
-                @include media(992px) {
-                    font-size: 16px;
+                    @include media(992px) {
+                        font-size: 16px;
+                    }
+
+                    @include media(768px) {
+                        color: $white;
+                        font-size: 18px;
+                    }
                 }
 
-                @include media(768px) {
-                    color: $white;
-                    font-size: 18px;
+                ;
+
+                a::after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    bottom: 0px;
+                    left: 0px;
+                    width: 0;
+                    height: 2px;
+                    background: $blue;
+                    transition: width .3s;
                 }
-            };
 
-            a::after {
-                content: '';
-                display: block;
-                position: absolute;
-                bottom: 0px;
-                left: 0px;
-                width: 0;
-                height: 2px;
-                background: $blue;
-                transition: width .3s;
+                a:hover::after {
+                    width: 100%;
+                    transition: width 0.1s;
+                }
+
+                a.active::after {
+                    width: 100%;
+                    transition: width 0.1s;
+                }
             }
 
-            a:hover::after {
-                width: 100%;
-                transition: width 0.1s;
-            }
+
         }
 
         &-right {

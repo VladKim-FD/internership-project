@@ -1,13 +1,13 @@
 <script setup>
 import { RouterView } from "vue-router";
-// import { useProductStore } from "./stores/store";
-
-// const store = useProductStore();
+import navbar from "./components/navbar.vue";
+import footerVue from "./components/footer.vue";
 </script>
 
 <template>
+  <navbar></navbar>
   <RouterView />
+  <footerVue></footerVue>
 </template>
 
-<style>
-</style>
+

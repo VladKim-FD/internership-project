@@ -38,20 +38,20 @@ let body = app.parentElement;
 
 function openModal() {
     modalOpen.value = true;
-    if(body.classList.contains('active')){
-    body.classList.remove('active')
-  }else{
-    body.classList.add('active')
-  }
+    if (body.classList.contains('active')) {
+        body.classList.remove('active')
+    } else {
+        body.classList.add('active')
+    }
 }
 
 function closeModal() {
     modalOpen.value = false;
-    if(body.classList.contains('active')){
-    body.classList.remove('active')
-  }else{
-    body.classList.add('active')
-  }
+    if (body.classList.contains('active')) {
+        body.classList.remove('active')
+    } else {
+        body.classList.add('active')
+    }
 }
 </script>
 
@@ -116,15 +116,15 @@ function closeModal() {
                 </div>
                 <div class="ordered-products">
                     <div class="item" v-for="product in orderedProducts">
-                    <img :src="product.thumbnail" alt="">
-                    <div class="item-description">
-                        <h4>{{ product.title }}</h4>
-                        <p>{{ product.description }}</p>
-                    </div>
-                    <div class="order-description">
-                        <p class="quantity">(x {{ product.amount }})</p>
-                    <p class="subtotal-sum">$ {{ product.totalSum }}</p>
-                    </div>
+                        <img :src="product.thumbnail" alt="">
+                        <div class="item-description">
+                            <h4>{{ product.title }}</h4>
+                            <p>{{ product.description }}</p>
+                        </div>
+                        <div class="order-description">
+                            <p class="quantity">(x {{ product.amount }})</p>
+                            <p class="subtotal-sum">$ {{ product.totalSum }}</p>
+                        </div>
                     </div>
                 </div>
                 <div class="sum-info">

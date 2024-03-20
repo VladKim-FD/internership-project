@@ -1,26 +1,16 @@
 <template>
-  <div>
-    <navbar></navbar>
     <headerVue></headerVue>
     <mainVue></mainVue>
-    <footerVue></footerVue>
-  </div>
 </template>
 
 <script>
-import navbar from "../components/navbar.vue";
 import headerVue from "../components/header.vue";
 import mainVue from "../components/main.vue";
-import footerVue from "../components/footer.vue";
 export default {
   components: {
-    navbar,
     headerVue,
-    mainVue,
-    footerVue,
+    mainVue
   },
 };
 </script>
 
-<style lang="scss">
-</style>

@@ -1,4 +1,4 @@
-<script>
+<script setup>
 import btn from "../components/btn.vue";
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper/modules";
 
@@ -13,25 +13,12 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 // Import Swiper styles
-export default {
-  components: {
-    Swiper,
-    SwiperSlide,
-    btn
-  },
-  setup() {
-    const onSwiper = (swiper) => {
+const onSwiper = (swiper) => {
 
-    };
-    const onSlideChange = () => {
-    };
-    return {
-      onSwiper,
-      onSlideChange,
-      modules: [Navigation, Pagination, Scrollbar, A11y, Autoplay],
-    };
-  },
 };
+const onSlideChange = () => {
+};
+const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay];
 </script>
 
 <template>
@@ -42,21 +29,12 @@ export default {
         <btn text="SHOP NOW"></btn>
       </div>
       <div class="header__content-right">
-        <swiper
-          :slides-per-view="1"
-          :space-between="50"
-          @swiper="onSwiper"
-          @slideChange="onSlideChange"
-          :pagination="{
-            clickable: true,
-          }"
-          :modules="modules"
-          :centeredSlides="true"
-          :autoplay="{
-            delay: 2500,
-            disableOnInteraction: false,
-          }"
-        >
+        <swiper :slides-per-view="1" :space-between="50" @swiper="onSwiper" @slideChange="onSlideChange" :pagination="{
+          clickable: true,
+        }" :modules="modules" :centeredSlides="true" :autoplay="{
+        delay: 2500,
+        disableOnInteraction: false,
+        }">
           <swiper-slide>
             <img src="../assets/images/iphones-1.png" alt="" />
           </swiper-slide>

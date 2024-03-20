@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import { useProductStore } from "../stores/store.js";
 import { useForm } from 'vee-validate';
 import * as yup from 'yup';
@@ -30,7 +30,6 @@ const phoneCodes = ref([]);
 
 const { errors, defineInputBinds } = useForm({
     validationSchema: yup.object({
-
         firstName: yup.string().required(),
         lastName: yup.string().required(),
         country: yup.required,
@@ -131,7 +130,7 @@ const address = defineInputBinds('address', {
                             <input type="text" class="phone-input" v-bind="phoneNumber">
                         </div>
                     </div>
-                    <p>{{ errors.phoneNumber }}</p>
+                    <p> {{ phoneNumber != '' ? errors.phoneNumber : ''}}</p>
                 </div>
             </div>
             <div class="different-address">
@@ -143,7 +142,6 @@ const address = defineInputBinds('address', {
                 <textarea name="" id="" cols="30" rows="10"></textarea>
             </label>
         </form>
-        <modal></modal>
     </div>
 </template>
 

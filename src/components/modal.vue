@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, onMounted } from "vue";
+import { computed } from "vue";
 import { useProductStore } from "../stores/store.js";
 
 const productStore = useProductStore();

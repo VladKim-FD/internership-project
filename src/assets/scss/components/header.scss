@@ -1,6 +1,12 @@
 @import "../common/root";
 @import "../common/common";
 
+.swiper-pagination-bullet{
+  width: 15px;
+  height: 15px;
+  margin: 0 15px !important;
+}
+
 .header {
   padding-top: 85px;
 

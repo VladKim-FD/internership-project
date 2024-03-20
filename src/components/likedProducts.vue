@@ -11,34 +11,29 @@ function openProduct(id) {
 }
 
 // like product 
-function likeProduct(event, product) {
-    if (event.target.classList.contains('active')) {
-        event.target.classList.remove('active')
-    } else {
-        event.target.classList.add('active')
-    }
+function likeProduct(product) {
     product.liked = !product.liked
 }
 
 // add or delete product
 
 function addOrDeleteProduct(product) {
-  if (product.amount != 0) {
-    product.amount = 0
-    product.totalSum = product.price * product.amount;
-    product.discountSum = product.discountPercentage / 100 * product.totalSum
+    if (product.amount != 0) {
+        product.amount = 0
+        product.totalSum = product.price * product.amount;
+        product.discountSum = product.discountPercentage / 100 * product.totalSum
 
-    localStorage.setItem("productStore", JSON.stringify(productStore));
-    
-  } else {
-    product.amount++
-    product.totalSum = product.price * product.amount;
-    product.discountSum = product.discountPercentage / 100 * product.totalSum
+        localStorage.setItem("productStore", JSON.stringify(productStore));
 
-    productStore.id = product.id;
+    } else {
+        product.amount++
+        product.totalSum = product.price * product.amount;
+        product.discountSum = product.discountPercentage / 100 * product.totalSum
 
-    localStorage.setItem("productStore", JSON.stringify(productStore));
-  }
+        productStore.id = product.id;
+
+        localStorage.setItem("productStore", JSON.stringify(productStore));
+    }
 }
 </script>
 
@@ -54,10 +49,9 @@ function addOrDeleteProduct(product) {
                 <div class="item__img">
                     <RouterLink :to="`/productCard/${product.id}`" @click="openProduct(product.id)"></RouterLink>
                     <div class="icons">
-                        <div class="icon-cart" @click="addOrDeleteProduct(product)" :class="{active: product.amount}"></div>
-                        <div class="icon-like" @click="likeProduct($event, product)" 
-                        :class="{active: product.liked == true}"
-                        ></div>
+                        <div class="icon-cart" @click="addOrDeleteProduct(product)" :class="{ active: product.amount }"></div>
+                        <div class="icon-like" @click="likeProduct($event, product)"
+                            :class="{ active: product.liked }"></div>
                     </div>
                     <img :src="product.thumbnail" alt="">
                 </div>

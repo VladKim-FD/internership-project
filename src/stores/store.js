@@ -19,9 +19,9 @@ export const useProductStore = defineStore("productStore", {
     };
   },
   getters: {
-    getImage(){
-       let img = !JSON.parse(localStorage.getItem("productStore"))?.img ? JSON.parse(localStorage.getItem("productStore"))?.products : '';
-       return img; 
+    getImage() {
+      let img = !JSON.parse(localStorage.getItem("productStore"))?.img ? JSON.parse(localStorage.getItem("productStore"))?.products : '';
+      return img;
     },
     getCategories() {
       for (let m = 0; m < this.products.length; m++) {
@@ -92,7 +92,7 @@ export const useProductStore = defineStore("productStore", {
     async getProducts() {
       try {
         let response = await axios.get(
-          `https://dummyjson.com/products/?&limit=50`
+          `https://dummyjson.com/products/?&limit=70`
         );
         this.products = response.data.products;
         const productStore = JSON.parse(localStorage.getItem("productStore"))?.products;

@@ -11,6 +11,10 @@ body.active {
     overflow: hidden;
 }
 
+img{
+    object-fit: contain;
+}
+
 :root {
     --black: #121211;
     --white: #fff;
@@ -67,5 +71,15 @@ $red: var(--red);
         font-size: 40px;
     }
     
+    &-prev::before{
+        content: '\f053';
+        font-family: 'icons';
+        // font-size: 10px;
+    } 
     
+    &-next::before{
+        content: '\f054';
+        font-family: 'icons';
+        // font-size: 10px;
+    }
 }

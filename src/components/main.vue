@@ -254,14 +254,24 @@ function selectOption() {
   dropdownIsOpen.value = false;
 }
 
+
+// scroll to Categories
+
+const categoriesList = ref("categoriesList");
+console.log(categoriesList);
+function scrollToCategories(){
+  categoriesList.value.scrollIntoView({ behavior: 'smooth' });
+  
+}
+
 </script>
 
 <template>
   <section class="categories">
     <div class="container categories__content">
       <h2>Categories</h2>
-      <div class="categories__content-list">
-        <ul class="list-categories">
+      <div class="categories__content-list" ref="categoriesList">
+        <ul class="list-categories" >
           <li v-for="category in firstFiveCategories" @click="changeProducts($event, category)"
             ref="categoriesFirstGroup">
             {{ category }}
@@ -315,9 +325,9 @@ function selectOption() {
       <div class="categories__content-buttons">
         <div class="content__slider" ref="containerSlider">
           <div class="slider-container" ref="slider">
-            <button @click="clickBtn(), (currentPage = btn)" ref="btns" v-show="!filter"
+            <button @click="clickBtn(), (currentPage = btn), scrollToCategories()" ref="btns" v-show="!filter"
               :class="{ active: btn == currentPage }" v-for="btn in pagesQuantity" class="slider-btn">
-              <p> {{ btn }}</p>
+              <a href="#categories">{{ btn }}</a>
             </button>
           </div>
         </div>

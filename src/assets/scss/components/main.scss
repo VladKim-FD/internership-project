@@ -298,7 +298,7 @@
         padding: 10px 15px;
         @include font(18px, 16px, $black, 400, "Kanit");
 
-        p {
+        a {
           @include font(18px, 16px, $black, 400, 'Kanit')
         }
       }
@@ -316,7 +316,7 @@
       .slider-btn.active {
         background: $blue;
 
-        p {
+        a {
           color: $white;
         }
       }
